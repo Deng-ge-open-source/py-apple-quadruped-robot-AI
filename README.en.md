@@ -115,7 +115,7 @@ Use the exploded view and print list to fit the structural parts, servos, bearin
 
 #### Hardware connections
 
-Connect the Zero core board and HAT, then attach the BNO055, PCA9685, and round display to the HAT.
+Connect the [Zero core board](hardware/README.en.md) and HAT, then attach the BNO055, PCA9685, and round display to the HAT.
 
 **[View hardware connections: wiring diagram, pin order, and power →](docs/WIRING.en.md)**
 

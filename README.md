@@ -117,7 +117,7 @@ DIY 一台菠萝狗，可以按下面三步开始：
 
 #### 硬件连接
 
-先连接 Zero 核心板与 HAT，再将 BNO055、PCA9685 和圆形屏幕接到 HAT。
+先连接 [Zero 核心板](hardware/README.md)与 HAT，再将 BNO055、PCA9685 和圆形屏幕接到 HAT。
 
 **[点击查看硬件连接：接线图、接口针序与供电说明 →](docs/WIRING.md)**
 
