@@ -1,0 +1,78 @@
+{
+  "name": "慢行",
+  "directory": "slow-walk",
+  "example_id": "pydog-gen4-walk-v30",
+  "downloaded_on": "2026-11-15",
+  "source_url": "https://sim2real.stackforce.cc/sim2real-examples/pydog-gen4-walk-v30.sim",
+  "original_bundle_id": "pydog-gen4-walk-v30-real-20261109",
+  "policy": {
+    "label": "policy.onnx",
+    "format": "onnx",
+    "browserUrl": "/pydog-gen4-walk-v30/policy/policy.onnx",
+    "bundlePath": "module/policy/policy.onnx",
+    "inputName": "obs",
+    "outputName": "actions",
+    "observationDim": 625,
+    "actionDim": 124,
+    "inputShapes": [
+      {
+        "name": "obs",
+        "shape": [
+          1,
+          625
+        ]
+      }
+    ],
+    "outputShapes": [
+      {
+        "name": "actions",
+        "shape": [
+          1,
+          124
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "structural": {
+      "level": "pass",
+      "errors": [],
+      "warnings": []
+    },
+    "semantic": {
+      "level": "pass",
+      "errors": [],
+      "warnings": []
+    },
+    "compatibility": {
+      "level": "warn",
+      "errors": [],
+      "warnings": [
+        "Walk v30 iteration 1499. Original course evaluation 9/13; velocity tracking remains incomplete. Hardware unverified."
+      ]
+    }
+  },
+  "qualification": {
+    "physicalActionDim": 12,
+    "controllerFeedbackDim": 112,
+    "hardwareDeployment": "unverified",
+    "simulation": "pending",
+    "mode": "virtual-servo-contract",
+    "note": "Walk v30 iteration 1499. Original course evaluation 9/13; velocity tracking remains incomplete. Hardware unverified."
+  },
+  "integrity_entries_verified": 49,
+  "files": {
+    "project.sim": {
+      "bytes": 2296556,
+      "sha256": "5cee4bbfa2115c8d9730e4f319a3f33b7081be495bf2dc21431fae2e3fe58853"
+    },
+    "policy.onnx": {
+      "bytes": 215211,
+      "sha256": "642f43baf5f9df4a7f59cf57b6bb38278e86073c13e7636a91aafbfbe757b7f4"
+    },
+    "sim2sim.profile.json": {
+      "bytes": 185924,
+      "sha256": "62005b429dbf1465c0909e2c62d2567a575e356482899cfbaa07813286b944a8"
+    }
+  }
+}

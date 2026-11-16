@@ -1,0 +1,78 @@
+{
+  "name": "全向小跑",
+  "directory": "omnidirectional-trot",
+  "example_id": "pydog-gen4-trot-v132-100",
+  "downloaded_on": "2026-11-15",
+  "source_url": "https://sim2real.stackforce.cc/sim2real-examples/pydog-gen4-trot-v132-100.sim",
+  "original_bundle_id": "pydog-gen4-trot-v132-100-real-20261031",
+  "policy": {
+    "label": "policy.onnx",
+    "format": "onnx",
+    "browserUrl": "/pydog-gen4-trot-v132-100/policy/policy.onnx",
+    "bundlePath": "module/policy/policy.onnx",
+    "inputName": "obs",
+    "outputName": "actions",
+    "observationDim": 585,
+    "actionDim": 120,
+    "inputShapes": [
+      {
+        "name": "obs",
+        "shape": [
+          1,
+          585
+        ]
+      }
+    ],
+    "outputShapes": [
+      {
+        "name": "actions",
+        "shape": [
+          1,
+          120
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "structural": {
+      "level": "pass",
+      "errors": [],
+      "warnings": []
+    },
+    "semantic": {
+      "level": "pass",
+      "errors": [],
+      "warnings": []
+    },
+    "compatibility": {
+      "level": "warn",
+      "errors": [],
+      "warnings": [
+        "V132 model_100; 1600-frame reference parity and six 20 s browser-engine stability trials passed. Speed tracking, standing drift and physical walking remain unqualified."
+      ]
+    }
+  },
+  "qualification": {
+    "physicalActionDim": 12,
+    "controllerFeedbackDim": 108,
+    "hardwareDeployment": "unverified",
+    "simulation": "wasm-stability-verified-tracking-partial",
+    "mode": "virtual-servo-contract",
+    "note": "V132 model_100; 1600-frame reference parity and six 20 s browser-engine stability trials passed. Speed tracking, standing drift and physical walking remain unqualified."
+  },
+  "integrity_entries_verified": 46,
+  "files": {
+    "project.sim": {
+      "bytes": 2202260,
+      "sha256": "6c0243468b7b6cd85fde6616c53bb482a6178efbde5a752275ac884ed40076a7"
+    },
+    "policy.onnx": {
+      "bytes": 200388,
+      "sha256": "f13fad763f2367dc4b5084148791555ab3f0e039c18f0d94cd70179aeea4c4fe"
+    },
+    "sim2sim.profile.json": {
+      "bytes": 183947,
+      "sha256": "ff736d29ddbbd584c884288cc9a5fe0c3a229d2a2c206aca9d5fe501f0461068"
+    }
+  }
+}

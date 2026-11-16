@@ -1,0 +1,7163 @@
+{
+  "schemaVersion": "0.1",
+  "kind": "stackforce.sim2sim.profile",
+  "id": "pydog-gen4-walk-v30-real",
+  "browserJobId": null,
+  "mappingMode": "manual",
+  "name": "菠萝狗 12自由度 慢行步态 · 实物工程",
+  "source": "local",
+  "exampleId": "pydog-gen4-walk-v30",
+  "createdBy": "StackForce",
+  "model": {
+    "format": "mjcf",
+    "rootPath": "model.xml",
+    "browserUrl": "/_sim2sim_examples/pydog-gen4-walk-v30/asset/model.xml",
+    "assetBaseUri": "/_sim2sim_examples/pydog-gen4-walk-v30/asset/"
+  },
+  "policy": {
+    "label": "policy.onnx",
+    "format": "onnx",
+    "browserUrl": "/pydog-gen4-walk-v30/policy/policy.onnx",
+    "bundlePath": "module/policy/policy.onnx",
+    "inputName": "obs",
+    "outputName": "actions",
+    "observationDim": 625,
+    "actionDim": 124,
+    "inputShapes": [
+      {
+        "name": "obs",
+        "shape": [
+          1,
+          625
+        ]
+      }
+    ],
+    "outputShapes": [
+      {
+        "name": "actions",
+        "shape": [
+          1,
+          124
+        ]
+      }
+    ]
+  },
+  "assembly": {
+    "schemaVersion": "0.1",
+    "kind": "stackforce.robot_assembly",
+    "source": "example",
+    "projectId": "pydog-gen4-walk-v30",
+    "assetBaseUri": "/_sim2sim_examples/pydog-gen4-walk-v30/asset/",
+    "robotRootPath": "model.xml",
+    "runtimeRootPath": "model.xml",
+    "generatedRootPath": "stackforce_auto_scene.xml",
+    "entryStrategy": "direct_model",
+    "sceneTemplate": "model_only",
+    "requiresUserSceneSelection": false,
+    "notes": [
+      "Independent virtual-servo contract example. Actor training coordinates are retained."
+    ]
+  },
+  "observation": {
+    "inputName": "obs",
+    "dim": 625,
+    "groups": [
+      {
+        "id": "gyro",
+        "label": "body angular velocity",
+        "span": "[0:3]",
+        "dim": 3,
+        "source": "body angular velocity",
+        "sourceType": "base_angular_velocity",
+        "targetMode": "manual",
+        "requirements": []
+      },
+      {
+        "id": "gravity",
+        "label": "projected gravity",
+        "span": "[3:6]",
+        "dim": 3,
+        "source": "projected gravity",
+        "sourceType": "base_orientation",
+        "targetMode": "manual",
+        "requirements": []
+      },
+      {
+        "id": "command",
+        "label": "velocity command",
+        "span": "[6:9]",
+        "dim": 3,
+        "source": "velocity command",
+        "sourceId": "runtime:command_vxyaw",
+        "sourceType": "command",
+        "targetMode": "manual",
+        "requirements": []
+      },
+      {
+        "id": "task_hints",
+        "label": "Task hints",
+        "span": "[9:13]",
+        "dim": 4,
+        "source": "constant zero",
+        "sourceId": "runtime:constant_zero",
+        "sourceType": "constant_zero",
+        "targetMode": "manual",
+        "requirements": []
+      },
+      {
+        "id": "controller_state",
+        "label": "previous controller state",
+        "span": "[13:125]",
+        "dim": 112,
+        "source": "previous controller state",
+        "sourceType": "previous_action",
+        "targetMode": "manual",
+        "requirements": []
+      }
+    ],
+    "assignments": {
+      "obs:0:1": "state:qvel:Wx",
+      "obs:1:2": "state:qvel:Wy",
+      "obs:2:3": "state:qvel:Wz",
+      "obs:3:4": "derived:projected_gravity:item0",
+      "obs:4:5": "derived:projected_gravity:item1",
+      "obs:5:6": "derived:projected_gravity:item2",
+      "obs:6:7": "runtime:command_vxyaw:cmd0",
+      "obs:7:8": "runtime:command_vxyaw:cmd1",
+      "obs:8:9": "runtime:command_vxyaw:cmd2",
+      "obs:9:10": "runtime:constant_zero",
+      "obs:10:11": "runtime:constant_zero",
+      "obs:11:12": "runtime:constant_zero",
+      "obs:12:13": "runtime:constant_zero",
+      "obs:13:14": "history:previous_action:action12",
+      "obs:14:15": "history:previous_action:action13",
+      "obs:15:16": "history:previous_action:action14",
+      "obs:16:17": "history:previous_action:action15",
+      "obs:17:18": "history:previous_action:action16",
+      "obs:18:19": "history:previous_action:action17",
+      "obs:19:20": "history:previous_action:action18",
+      "obs:20:21": "history:previous_action:action19",
+      "obs:21:22": "history:previous_action:action20",
+      "obs:22:23": "history:previous_action:action21",
+      "obs:23:24": "history:previous_action:action22",
+      "obs:24:25": "history:previous_action:action23",
+      "obs:25:26": "history:previous_action:action24",
+      "obs:26:27": "history:previous_action:action25",
+      "obs:27:28": "history:previous_action:action26",
+      "obs:28:29": "history:previous_action:action27",
+      "obs:29:30": "history:previous_action:action28",
+      "obs:30:31": "history:previous_action:action29",
+      "obs:31:32": "history:previous_action:action30",
+      "obs:32:33": "history:previous_action:action31",
+      "obs:33:34": "history:previous_action:action32",
+      "obs:34:35": "history:previous_action:action33",
+      "obs:35:36": "history:previous_action:action34",
+      "obs:36:37": "history:previous_action:action35",
+      "obs:37:38": "history:previous_action:action36",
+      "obs:38:39": "history:previous_action:action37",
+      "obs:39:40": "history:previous_action:action38",
+      "obs:40:41": "history:previous_action:action39",
+      "obs:41:42": "history:previous_action:action40",
+      "obs:42:43": "history:previous_action:action41",
+      "obs:43:44": "history:previous_action:action42",
+      "obs:44:45": "history:previous_action:action43",
+      "obs:45:46": "history:previous_action:action44",
+      "obs:46:47": "history:previous_action:action45",
+      "obs:47:48": "history:previous_action:action46",
+      "obs:48:49": "history:previous_action:action47",
+      "obs:49:50": "history:previous_action:action48",
+      "obs:50:51": "history:previous_action:action49",
+      "obs:51:52": "history:previous_action:action50",
+      "obs:52:53": "history:previous_action:action51",
+      "obs:53:54": "history:previous_action:action52",
+      "obs:54:55": "history:previous_action:action53",
+      "obs:55:56": "history:previous_action:action54",
+      "obs:56:57": "history:previous_action:action55",
+      "obs:57:58": "history:previous_action:action56",
+      "obs:58:59": "history:previous_action:action57",
+      "obs:59:60": "history:previous_action:action58",
+      "obs:60:61": "history:previous_action:action59",
+      "obs:61:62": "history:previous_action:action60",
+      "obs:62:63": "history:previous_action:action61",
+      "obs:63:64": "history:previous_action:action62",
+      "obs:64:65": "history:previous_action:action63",
+      "obs:65:66": "history:previous_action:action64",
+      "obs:66:67": "history:previous_action:action65",
+      "obs:67:68": "history:previous_action:action66",
+      "obs:68:69": "history:previous_action:action67",
+      "obs:69:70": "history:previous_action:action68",
+      "obs:70:71": "history:previous_action:action69",
+      "obs:71:72": "history:previous_action:action70",
+      "obs:72:73": "history:previous_action:action71",
+      "obs:73:74": "history:previous_action:action72",
+      "obs:74:75": "history:previous_action:action73",
+      "obs:75:76": "history:previous_action:action74",
+      "obs:76:77": "history:previous_action:action75",
+      "obs:77:78": "history:previous_action:action76",
+      "obs:78:79": "history:previous_action:action77",
+      "obs:79:80": "history:previous_action:action78",
+      "obs:80:81": "history:previous_action:action79",
+      "obs:81:82": "history:previous_action:action80",
+      "obs:82:83": "history:previous_action:action81",
+      "obs:83:84": "history:previous_action:action82",
+      "obs:84:85": "history:previous_action:action83",
+      "obs:85:86": "history:previous_action:action84",
+      "obs:86:87": "history:previous_action:action85",
+      "obs:87:88": "history:previous_action:action86",
+      "obs:88:89": "history:previous_action:action87",
+      "obs:89:90": "history:previous_action:action88",
+      "obs:90:91": "history:previous_action:action89",
+      "obs:91:92": "history:previous_action:action90",
+      "obs:92:93": "history:previous_action:action91",
+      "obs:93:94": "history:previous_action:action92",
+      "obs:94:95": "history:previous_action:action93",
+      "obs:95:96": "history:previous_action:action94",
+      "obs:96:97": "history:previous_action:action95",
+      "obs:97:98": "history:previous_action:action96",
+      "obs:98:99": "history:previous_action:action97",
+      "obs:99:100": "history:previous_action:action98",
+      "obs:100:101": "history:previous_action:action99",
+      "obs:101:102": "history:previous_action:action100",
+      "obs:102:103": "history:previous_action:action101",
+      "obs:103:104": "history:previous_action:action102",
+      "obs:104:105": "history:previous_action:action103",
+      "obs:105:106": "history:previous_action:action104",
+      "obs:106:107": "history:previous_action:action105",
+      "obs:107:108": "history:previous_action:action106",
+      "obs:108:109": "history:previous_action:action107",
+      "obs:109:110": "history:previous_action:action108",
+      "obs:110:111": "history:previous_action:action109",
+      "obs:111:112": "history:previous_action:action110",
+      "obs:112:113": "history:previous_action:action111",
+      "obs:113:114": "history:previous_action:action112",
+      "obs:114:115": "history:previous_action:action113",
+      "obs:115:116": "history:previous_action:action114",
+      "obs:116:117": "history:previous_action:action115",
+      "obs:117:118": "history:previous_action:action116",
+      "obs:118:119": "history:previous_action:action117",
+      "obs:119:120": "history:previous_action:action118",
+      "obs:120:121": "history:previous_action:action119",
+      "obs:121:122": "history:previous_action:action120",
+      "obs:122:123": "history:previous_action:action121",
+      "obs:123:124": "history:previous_action:action122",
+      "obs:124:125": "history:previous_action:action123"
+    },
+    "transforms": {},
+    "removedAssignments": {},
+    "frameStack": {
+      "frames": 5,
+      "frameDim": 125,
+      "order": "old_to_new",
+      "initialize": "zero"
+    }
+  },
+  "action": {
+    "outputName": "actions",
+    "dim": 124,
+    "groups": [
+      {
+        "id": "physical_00",
+        "index": 0,
+        "label": "action[0] FL_abad_joint",
+        "action": "action[0]",
+        "span": "[0:1]",
+        "dim": 1,
+        "source": "position offset relative configured initial pose",
+        "actuator": "FL_abad_joint",
+        "target": "FL_abad_joint",
+        "targetType": "actuator",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "position target",
+        "scale": "position offset * 1",
+        "control": {
+          "mode": "pd",
+          "kp": 5,
+          "kd": 0.1,
+          "scale": 1,
+          "offset": 0,
+          "sign": 1,
+          "initialAngle": 0,
+          "limit": 0.800000011920929,
+          "actuatorDynamics": {
+            "type": "capped_position",
+            "effortLimit": 0.490333
+          }
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "FL_abad_joint"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "physical_01",
+        "index": 1,
+        "label": "action[1] FL_thigh_joint",
+        "action": "action[1]",
+        "span": "[1:2]",
+        "dim": 1,
+        "source": "position offset relative configured initial pose",
+        "actuator": "FL_thigh_joint",
+        "target": "FL_thigh_joint",
+        "targetType": "actuator",
+        "targetMode": "named",
+        "joint": "FL_thigh_joint",
+        "mode": "position target",
+        "scale": "position offset * 1",
+        "control": {
+          "mode": "pd",
+          "kp": 5,
+          "kd": 0.1,
+          "scale": 1,
+          "offset": 0,
+          "sign": 1,
+          "initialAngle": 0.6144833853239036,
+          "limit": 1.8980000615119934,
+          "actuatorDynamics": {
+            "type": "capped_position",
+            "effortLimit": 0.490333
+          }
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "FL_thigh_joint"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "physical_02",
+        "index": 2,
+        "label": "action[2] FL_calf_joint",
+        "action": "action[2]",
+        "span": "[2:3]",
+        "dim": 1,
+        "source": "position offset relative configured initial pose",
+        "actuator": "FL_calf_joint",
+        "target": "FL_calf_joint",
+        "targetType": "actuator",
+        "targetMode": "named",
+        "joint": "FL_calf_joint",
+        "mode": "position target",
+        "scale": "position offset * 1",
+        "control": {
+          "mode": "pd",
+          "kp": 5,
+          "kd": 0.1,
+          "scale": 1,
+          "offset": 0,
+          "sign": 1,
+          "initialAngle": 0.23604504633439105,
+          "limit": 1.5960000529885292,
+          "actuatorDynamics": {
+            "type": "capped_position",
+            "effortLimit": 0.490333
+          }
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "FL_calf_joint"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "physical_03",
+        "index": 3,
+        "label": "action[3] FR_abad_joint",
+        "action": "action[3]",
+        "span": "[3:4]",
+        "dim": 1,
+        "source": "position offset relative configured initial pose",
+        "actuator": "FR_abad_joint",
+        "target": "FR_abad_joint",
+        "targetType": "actuator",
+        "targetMode": "named",
+        "joint": "FR_abad_joint",
+        "mode": "position target",
+        "scale": "position offset * 1",
+        "control": {
+          "mode": "pd",
+          "kp": 5,
+          "kd": 0.1,
+          "scale": 1,
+          "offset": 0,
+          "sign": 1,
+          "initialAngle": 0,
+          "limit": 0.800000011920929,
+          "actuatorDynamics": {
+            "type": "capped_position",
+            "effortLimit": 0.490333
+          }
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "FR_abad_joint"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "physical_04",
+        "index": 4,
+        "label": "action[4] FR_thigh_joint",
+        "action": "action[4]",
+        "span": "[4:5]",
+        "dim": 1,
+        "source": "position offset relative configured initial pose",
+        "actuator": "FR_thigh_joint",
+        "target": "FR_thigh_joint",
+        "targetType": "actuator",
+        "targetMode": "named",
+        "joint": "FR_thigh_joint",
+        "mode": "position target",
+        "scale": "position offset * 1",
+        "control": {
+          "mode": "pd",
+          "kp": 5,
+          "kd": 0.1,
+          "scale": 1,
+          "offset": 0,
+          "sign": 1,
+          "initialAngle": 0.6144833853239036,
+          "limit": 1.8980000615119934,
+          "actuatorDynamics": {
+            "type": "capped_position",
+            "effortLimit": 0.490333
+          }
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "FR_thigh_joint"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "physical_05",
+        "index": 5,
+        "label": "action[5] FR_calf_joint",
+        "action": "action[5]",
+        "span": "[5:6]",
+        "dim": 1,
+        "source": "position offset relative configured initial pose",
+        "actuator": "FR_calf_joint",
+        "target": "FR_calf_joint",
+        "targetType": "actuator",
+        "targetMode": "named",
+        "joint": "FR_calf_joint",
+        "mode": "position target",
+        "scale": "position offset * 1",
+        "control": {
+          "mode": "pd",
+          "kp": 5,
+          "kd": 0.1,
+          "scale": 1,
+          "offset": 0,
+          "sign": 1,
+          "initialAngle": -0.23595779465441002,
+          "limit": 1.5960000529885292,
+          "actuatorDynamics": {
+            "type": "capped_position",
+            "effortLimit": 0.490333
+          }
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "FR_calf_joint"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "physical_06",
+        "index": 6,
+        "label": "action[6] RL_abad_joint",
+        "action": "action[6]",
+        "span": "[6:7]",
+        "dim": 1,
+        "source": "position offset relative configured initial pose",
+        "actuator": "RL_abad_joint",
+        "target": "RL_abad_joint",
+        "targetType": "actuator",
+        "targetMode": "named",
+        "joint": "RL_abad_joint",
+        "mode": "position target",
+        "scale": "position offset * 1",
+        "control": {
+          "mode": "pd",
+          "kp": 5,
+          "kd": 0.1,
+          "scale": 1,
+          "offset": 0,
+          "sign": 1,
+          "initialAngle": 0,
+          "limit": 0.800000011920929,
+          "actuatorDynamics": {
+            "type": "capped_position",
+            "effortLimit": 0.490333
+          }
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "RL_abad_joint"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "physical_07",
+        "index": 7,
+        "label": "action[7] RL_thigh_joint",
+        "action": "action[7]",
+        "span": "[7:8]",
+        "dim": 1,
+        "source": "position offset relative configured initial pose",
+        "actuator": "RL_thigh_joint",
+        "target": "RL_thigh_joint",
+        "targetType": "actuator",
+        "targetMode": "named",
+        "joint": "RL_thigh_joint",
+        "mode": "position target",
+        "scale": "position offset * 1",
+        "control": {
+          "mode": "pd",
+          "kp": 5,
+          "kd": 0.1,
+          "scale": 1,
+          "offset": 0,
+          "sign": 1,
+          "initialAngle": 0.6144833853239036,
+          "limit": 1.8980000615119934,
+          "actuatorDynamics": {
+            "type": "capped_position",
+            "effortLimit": 0.490333
+          }
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "RL_thigh_joint"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "physical_08",
+        "index": 8,
+        "label": "action[8] RL_calf_joint",
+        "action": "action[8]",
+        "span": "[8:9]",
+        "dim": 1,
+        "source": "position offset relative configured initial pose",
+        "actuator": "RL_calf_joint",
+        "target": "RL_calf_joint",
+        "targetType": "actuator",
+        "targetMode": "named",
+        "joint": "RL_calf_joint",
+        "mode": "position target",
+        "scale": "position offset * 1",
+        "control": {
+          "mode": "pd",
+          "kp": 5,
+          "kd": 0.1,
+          "scale": 1,
+          "offset": 0,
+          "sign": 1,
+          "initialAngle": 0.23604504633439105,
+          "limit": 1.5960000529885292,
+          "actuatorDynamics": {
+            "type": "capped_position",
+            "effortLimit": 0.490333
+          }
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "RL_calf_joint"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "physical_09",
+        "index": 9,
+        "label": "action[9] RR_abad_joint",
+        "action": "action[9]",
+        "span": "[9:10]",
+        "dim": 1,
+        "source": "position offset relative configured initial pose",
+        "actuator": "RR_abad_joint",
+        "target": "RR_abad_joint",
+        "targetType": "actuator",
+        "targetMode": "named",
+        "joint": "RR_abad_joint",
+        "mode": "position target",
+        "scale": "position offset * 1",
+        "control": {
+          "mode": "pd",
+          "kp": 5,
+          "kd": 0.1,
+          "scale": 1,
+          "offset": 0,
+          "sign": 1,
+          "initialAngle": 0,
+          "limit": 0.800000011920929,
+          "actuatorDynamics": {
+            "type": "capped_position",
+            "effortLimit": 0.490333
+          }
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "RR_abad_joint"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "physical_10",
+        "index": 10,
+        "label": "action[10] RR_thigh_joint",
+        "action": "action[10]",
+        "span": "[10:11]",
+        "dim": 1,
+        "source": "position offset relative configured initial pose",
+        "actuator": "RR_thigh_joint",
+        "target": "RR_thigh_joint",
+        "targetType": "actuator",
+        "targetMode": "named",
+        "joint": "RR_thigh_joint",
+        "mode": "position target",
+        "scale": "position offset * 1",
+        "control": {
+          "mode": "pd",
+          "kp": 5,
+          "kd": 0.1,
+          "scale": 1,
+          "offset": 0,
+          "sign": 1,
+          "initialAngle": 0.6144833853239036,
+          "limit": 1.8980000615119934,
+          "actuatorDynamics": {
+            "type": "capped_position",
+            "effortLimit": 0.490333
+          }
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "RR_thigh_joint"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "physical_11",
+        "index": 11,
+        "label": "action[11] RR_calf_joint",
+        "action": "action[11]",
+        "span": "[11:12]",
+        "dim": 1,
+        "source": "position offset relative configured initial pose",
+        "actuator": "RR_calf_joint",
+        "target": "RR_calf_joint",
+        "targetType": "actuator",
+        "targetMode": "named",
+        "joint": "RR_calf_joint",
+        "mode": "position target",
+        "scale": "position offset * 1",
+        "control": {
+          "mode": "pd",
+          "kp": 5,
+          "kd": 0.1,
+          "scale": 1,
+          "offset": 0,
+          "sign": 1,
+          "initialAngle": 0.18395780179488885,
+          "limit": 1.5960000529885292,
+          "actuatorDynamics": {
+            "type": "capped_position",
+            "effortLimit": 0.490333
+          }
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "RR_calf_joint"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_000",
+        "index": 12,
+        "label": "Controller feedback 0",
+        "action": "action[12]",
+        "span": "[12:13]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_000",
+        "target": "state_000",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_000"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_001",
+        "index": 13,
+        "label": "Controller feedback 1",
+        "action": "action[13]",
+        "span": "[13:14]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_001",
+        "target": "state_001",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_001"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_002",
+        "index": 14,
+        "label": "Controller feedback 2",
+        "action": "action[14]",
+        "span": "[14:15]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_002",
+        "target": "state_002",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_002"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_003",
+        "index": 15,
+        "label": "Controller feedback 3",
+        "action": "action[15]",
+        "span": "[15:16]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_003",
+        "target": "state_003",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_003"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_004",
+        "index": 16,
+        "label": "Controller feedback 4",
+        "action": "action[16]",
+        "span": "[16:17]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_004",
+        "target": "state_004",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_004"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_005",
+        "index": 17,
+        "label": "Controller feedback 5",
+        "action": "action[17]",
+        "span": "[17:18]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_005",
+        "target": "state_005",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_005"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_006",
+        "index": 18,
+        "label": "Controller feedback 6",
+        "action": "action[18]",
+        "span": "[18:19]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_006",
+        "target": "state_006",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_006"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_007",
+        "index": 19,
+        "label": "Controller feedback 7",
+        "action": "action[19]",
+        "span": "[19:20]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_007",
+        "target": "state_007",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_007"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_008",
+        "index": 20,
+        "label": "Controller feedback 8",
+        "action": "action[20]",
+        "span": "[20:21]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_008",
+        "target": "state_008",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_008"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_009",
+        "index": 21,
+        "label": "Controller feedback 9",
+        "action": "action[21]",
+        "span": "[21:22]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_009",
+        "target": "state_009",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_009"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_010",
+        "index": 22,
+        "label": "Controller feedback 10",
+        "action": "action[22]",
+        "span": "[22:23]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_010",
+        "target": "state_010",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_010"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_011",
+        "index": 23,
+        "label": "Controller feedback 11",
+        "action": "action[23]",
+        "span": "[23:24]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_011",
+        "target": "state_011",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_011"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_012",
+        "index": 24,
+        "label": "Controller feedback 12",
+        "action": "action[24]",
+        "span": "[24:25]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_012",
+        "target": "state_012",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_012"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_013",
+        "index": 25,
+        "label": "Controller feedback 13",
+        "action": "action[25]",
+        "span": "[25:26]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_013",
+        "target": "state_013",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_013"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_014",
+        "index": 26,
+        "label": "Controller feedback 14",
+        "action": "action[26]",
+        "span": "[26:27]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_014",
+        "target": "state_014",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_014"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_015",
+        "index": 27,
+        "label": "Controller feedback 15",
+        "action": "action[27]",
+        "span": "[27:28]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_015",
+        "target": "state_015",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_015"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_016",
+        "index": 28,
+        "label": "Controller feedback 16",
+        "action": "action[28]",
+        "span": "[28:29]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_016",
+        "target": "state_016",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_016"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_017",
+        "index": 29,
+        "label": "Controller feedback 17",
+        "action": "action[29]",
+        "span": "[29:30]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_017",
+        "target": "state_017",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_017"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_018",
+        "index": 30,
+        "label": "Controller feedback 18",
+        "action": "action[30]",
+        "span": "[30:31]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_018",
+        "target": "state_018",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_018"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_019",
+        "index": 31,
+        "label": "Controller feedback 19",
+        "action": "action[31]",
+        "span": "[31:32]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_019",
+        "target": "state_019",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_019"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_020",
+        "index": 32,
+        "label": "Controller feedback 20",
+        "action": "action[32]",
+        "span": "[32:33]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_020",
+        "target": "state_020",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_020"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_021",
+        "index": 33,
+        "label": "Controller feedback 21",
+        "action": "action[33]",
+        "span": "[33:34]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_021",
+        "target": "state_021",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_021"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_022",
+        "index": 34,
+        "label": "Controller feedback 22",
+        "action": "action[34]",
+        "span": "[34:35]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_022",
+        "target": "state_022",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_022"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_023",
+        "index": 35,
+        "label": "Controller feedback 23",
+        "action": "action[35]",
+        "span": "[35:36]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_023",
+        "target": "state_023",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_023"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_024",
+        "index": 36,
+        "label": "Controller feedback 24",
+        "action": "action[36]",
+        "span": "[36:37]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_024",
+        "target": "state_024",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_024"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_025",
+        "index": 37,
+        "label": "Controller feedback 25",
+        "action": "action[37]",
+        "span": "[37:38]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_025",
+        "target": "state_025",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_025"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_026",
+        "index": 38,
+        "label": "Controller feedback 26",
+        "action": "action[38]",
+        "span": "[38:39]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_026",
+        "target": "state_026",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_026"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_027",
+        "index": 39,
+        "label": "Controller feedback 27",
+        "action": "action[39]",
+        "span": "[39:40]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_027",
+        "target": "state_027",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_027"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_028",
+        "index": 40,
+        "label": "Controller feedback 28",
+        "action": "action[40]",
+        "span": "[40:41]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_028",
+        "target": "state_028",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_028"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_029",
+        "index": 41,
+        "label": "Controller feedback 29",
+        "action": "action[41]",
+        "span": "[41:42]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_029",
+        "target": "state_029",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_029"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_030",
+        "index": 42,
+        "label": "Controller feedback 30",
+        "action": "action[42]",
+        "span": "[42:43]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_030",
+        "target": "state_030",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_030"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_031",
+        "index": 43,
+        "label": "Controller feedback 31",
+        "action": "action[43]",
+        "span": "[43:44]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_031",
+        "target": "state_031",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_031"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_032",
+        "index": 44,
+        "label": "Controller feedback 32",
+        "action": "action[44]",
+        "span": "[44:45]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_032",
+        "target": "state_032",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_032"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_033",
+        "index": 45,
+        "label": "Controller feedback 33",
+        "action": "action[45]",
+        "span": "[45:46]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_033",
+        "target": "state_033",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_033"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_034",
+        "index": 46,
+        "label": "Controller feedback 34",
+        "action": "action[46]",
+        "span": "[46:47]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_034",
+        "target": "state_034",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_034"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_035",
+        "index": 47,
+        "label": "Controller feedback 35",
+        "action": "action[47]",
+        "span": "[47:48]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_035",
+        "target": "state_035",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_035"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_036",
+        "index": 48,
+        "label": "Controller feedback 36",
+        "action": "action[48]",
+        "span": "[48:49]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_036",
+        "target": "state_036",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_036"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_037",
+        "index": 49,
+        "label": "Controller feedback 37",
+        "action": "action[49]",
+        "span": "[49:50]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_037",
+        "target": "state_037",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_037"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_038",
+        "index": 50,
+        "label": "Controller feedback 38",
+        "action": "action[50]",
+        "span": "[50:51]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_038",
+        "target": "state_038",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_038"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_039",
+        "index": 51,
+        "label": "Controller feedback 39",
+        "action": "action[51]",
+        "span": "[51:52]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_039",
+        "target": "state_039",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_039"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_040",
+        "index": 52,
+        "label": "Controller feedback 40",
+        "action": "action[52]",
+        "span": "[52:53]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_040",
+        "target": "state_040",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_040"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_041",
+        "index": 53,
+        "label": "Controller feedback 41",
+        "action": "action[53]",
+        "span": "[53:54]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_041",
+        "target": "state_041",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_041"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_042",
+        "index": 54,
+        "label": "Controller feedback 42",
+        "action": "action[54]",
+        "span": "[54:55]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_042",
+        "target": "state_042",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_042"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_043",
+        "index": 55,
+        "label": "Controller feedback 43",
+        "action": "action[55]",
+        "span": "[55:56]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_043",
+        "target": "state_043",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_043"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_044",
+        "index": 56,
+        "label": "Controller feedback 44",
+        "action": "action[56]",
+        "span": "[56:57]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_044",
+        "target": "state_044",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_044"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_045",
+        "index": 57,
+        "label": "Controller feedback 45",
+        "action": "action[57]",
+        "span": "[57:58]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_045",
+        "target": "state_045",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_045"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_046",
+        "index": 58,
+        "label": "Controller feedback 46",
+        "action": "action[58]",
+        "span": "[58:59]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_046",
+        "target": "state_046",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_046"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_047",
+        "index": 59,
+        "label": "Controller feedback 47",
+        "action": "action[59]",
+        "span": "[59:60]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_047",
+        "target": "state_047",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_047"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_048",
+        "index": 60,
+        "label": "Controller feedback 48",
+        "action": "action[60]",
+        "span": "[60:61]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_048",
+        "target": "state_048",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_048"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_049",
+        "index": 61,
+        "label": "Controller feedback 49",
+        "action": "action[61]",
+        "span": "[61:62]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_049",
+        "target": "state_049",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_049"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_050",
+        "index": 62,
+        "label": "Controller feedback 50",
+        "action": "action[62]",
+        "span": "[62:63]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_050",
+        "target": "state_050",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_050"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_051",
+        "index": 63,
+        "label": "Controller feedback 51",
+        "action": "action[63]",
+        "span": "[63:64]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_051",
+        "target": "state_051",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_051"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_052",
+        "index": 64,
+        "label": "Controller feedback 52",
+        "action": "action[64]",
+        "span": "[64:65]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_052",
+        "target": "state_052",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_052"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_053",
+        "index": 65,
+        "label": "Controller feedback 53",
+        "action": "action[65]",
+        "span": "[65:66]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_053",
+        "target": "state_053",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_053"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_054",
+        "index": 66,
+        "label": "Controller feedback 54",
+        "action": "action[66]",
+        "span": "[66:67]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_054",
+        "target": "state_054",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_054"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_055",
+        "index": 67,
+        "label": "Controller feedback 55",
+        "action": "action[67]",
+        "span": "[67:68]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_055",
+        "target": "state_055",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_055"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_056",
+        "index": 68,
+        "label": "Controller feedback 56",
+        "action": "action[68]",
+        "span": "[68:69]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_056",
+        "target": "state_056",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_056"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_057",
+        "index": 69,
+        "label": "Controller feedback 57",
+        "action": "action[69]",
+        "span": "[69:70]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_057",
+        "target": "state_057",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_057"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_058",
+        "index": 70,
+        "label": "Controller feedback 58",
+        "action": "action[70]",
+        "span": "[70:71]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_058",
+        "target": "state_058",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_058"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_059",
+        "index": 71,
+        "label": "Controller feedback 59",
+        "action": "action[71]",
+        "span": "[71:72]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_059",
+        "target": "state_059",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_059"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_060",
+        "index": 72,
+        "label": "Controller feedback 60",
+        "action": "action[72]",
+        "span": "[72:73]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_060",
+        "target": "state_060",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_060"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_061",
+        "index": 73,
+        "label": "Controller feedback 61",
+        "action": "action[73]",
+        "span": "[73:74]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_061",
+        "target": "state_061",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_061"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_062",
+        "index": 74,
+        "label": "Controller feedback 62",
+        "action": "action[74]",
+        "span": "[74:75]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_062",
+        "target": "state_062",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_062"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_063",
+        "index": 75,
+        "label": "Controller feedback 63",
+        "action": "action[75]",
+        "span": "[75:76]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_063",
+        "target": "state_063",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_063"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_064",
+        "index": 76,
+        "label": "Controller feedback 64",
+        "action": "action[76]",
+        "span": "[76:77]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_064",
+        "target": "state_064",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_064"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_065",
+        "index": 77,
+        "label": "Controller feedback 65",
+        "action": "action[77]",
+        "span": "[77:78]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_065",
+        "target": "state_065",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_065"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_066",
+        "index": 78,
+        "label": "Controller feedback 66",
+        "action": "action[78]",
+        "span": "[78:79]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_066",
+        "target": "state_066",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_066"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_067",
+        "index": 79,
+        "label": "Controller feedback 67",
+        "action": "action[79]",
+        "span": "[79:80]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_067",
+        "target": "state_067",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_067"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_068",
+        "index": 80,
+        "label": "Controller feedback 68",
+        "action": "action[80]",
+        "span": "[80:81]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_068",
+        "target": "state_068",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_068"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_069",
+        "index": 81,
+        "label": "Controller feedback 69",
+        "action": "action[81]",
+        "span": "[81:82]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_069",
+        "target": "state_069",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_069"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_070",
+        "index": 82,
+        "label": "Controller feedback 70",
+        "action": "action[82]",
+        "span": "[82:83]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_070",
+        "target": "state_070",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_070"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_071",
+        "index": 83,
+        "label": "Controller feedback 71",
+        "action": "action[83]",
+        "span": "[83:84]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_071",
+        "target": "state_071",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_071"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_072",
+        "index": 84,
+        "label": "Controller feedback 72",
+        "action": "action[84]",
+        "span": "[84:85]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_072",
+        "target": "state_072",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_072"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_073",
+        "index": 85,
+        "label": "Controller feedback 73",
+        "action": "action[85]",
+        "span": "[85:86]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_073",
+        "target": "state_073",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_073"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_074",
+        "index": 86,
+        "label": "Controller feedback 74",
+        "action": "action[86]",
+        "span": "[86:87]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_074",
+        "target": "state_074",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_074"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_075",
+        "index": 87,
+        "label": "Controller feedback 75",
+        "action": "action[87]",
+        "span": "[87:88]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_075",
+        "target": "state_075",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_075"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_076",
+        "index": 88,
+        "label": "Controller feedback 76",
+        "action": "action[88]",
+        "span": "[88:89]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_076",
+        "target": "state_076",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_076"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_077",
+        "index": 89,
+        "label": "Controller feedback 77",
+        "action": "action[89]",
+        "span": "[89:90]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_077",
+        "target": "state_077",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_077"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_078",
+        "index": 90,
+        "label": "Controller feedback 78",
+        "action": "action[90]",
+        "span": "[90:91]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_078",
+        "target": "state_078",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_078"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_079",
+        "index": 91,
+        "label": "Controller feedback 79",
+        "action": "action[91]",
+        "span": "[91:92]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_079",
+        "target": "state_079",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_079"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_080",
+        "index": 92,
+        "label": "Controller feedback 80",
+        "action": "action[92]",
+        "span": "[92:93]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_080",
+        "target": "state_080",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_080"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_081",
+        "index": 93,
+        "label": "Controller feedback 81",
+        "action": "action[93]",
+        "span": "[93:94]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_081",
+        "target": "state_081",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_081"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_082",
+        "index": 94,
+        "label": "Controller feedback 82",
+        "action": "action[94]",
+        "span": "[94:95]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_082",
+        "target": "state_082",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_082"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_083",
+        "index": 95,
+        "label": "Controller feedback 83",
+        "action": "action[95]",
+        "span": "[95:96]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_083",
+        "target": "state_083",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_083"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_084",
+        "index": 96,
+        "label": "Controller feedback 84",
+        "action": "action[96]",
+        "span": "[96:97]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_084",
+        "target": "state_084",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_084"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_085",
+        "index": 97,
+        "label": "Controller feedback 85",
+        "action": "action[97]",
+        "span": "[97:98]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_085",
+        "target": "state_085",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_085"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_086",
+        "index": 98,
+        "label": "Controller feedback 86",
+        "action": "action[98]",
+        "span": "[98:99]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_086",
+        "target": "state_086",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_086"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_087",
+        "index": 99,
+        "label": "Controller feedback 87",
+        "action": "action[99]",
+        "span": "[99:100]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_087",
+        "target": "state_087",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_087"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_088",
+        "index": 100,
+        "label": "Controller feedback 88",
+        "action": "action[100]",
+        "span": "[100:101]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_088",
+        "target": "state_088",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_088"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_089",
+        "index": 101,
+        "label": "Controller feedback 89",
+        "action": "action[101]",
+        "span": "[101:102]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_089",
+        "target": "state_089",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_089"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_090",
+        "index": 102,
+        "label": "Controller feedback 90",
+        "action": "action[102]",
+        "span": "[102:103]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_090",
+        "target": "state_090",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_090"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_091",
+        "index": 103,
+        "label": "Controller feedback 91",
+        "action": "action[103]",
+        "span": "[103:104]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_091",
+        "target": "state_091",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_091"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_092",
+        "index": 104,
+        "label": "Controller feedback 92",
+        "action": "action[104]",
+        "span": "[104:105]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_092",
+        "target": "state_092",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_092"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_093",
+        "index": 105,
+        "label": "Controller feedback 93",
+        "action": "action[105]",
+        "span": "[105:106]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_093",
+        "target": "state_093",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_093"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_094",
+        "index": 106,
+        "label": "Controller feedback 94",
+        "action": "action[106]",
+        "span": "[106:107]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_094",
+        "target": "state_094",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_094"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_095",
+        "index": 107,
+        "label": "Controller feedback 95",
+        "action": "action[107]",
+        "span": "[107:108]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_095",
+        "target": "state_095",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_095"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_096",
+        "index": 108,
+        "label": "Controller feedback 96",
+        "action": "action[108]",
+        "span": "[108:109]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_096",
+        "target": "state_096",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_096"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_097",
+        "index": 109,
+        "label": "Controller feedback 97",
+        "action": "action[109]",
+        "span": "[109:110]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_097",
+        "target": "state_097",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_097"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_098",
+        "index": 110,
+        "label": "Controller feedback 98",
+        "action": "action[110]",
+        "span": "[110:111]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_098",
+        "target": "state_098",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_098"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_099",
+        "index": 111,
+        "label": "Controller feedback 99",
+        "action": "action[111]",
+        "span": "[111:112]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_099",
+        "target": "state_099",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_099"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_100",
+        "index": 112,
+        "label": "Controller feedback 100",
+        "action": "action[112]",
+        "span": "[112:113]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_100",
+        "target": "state_100",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_100"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_101",
+        "index": 113,
+        "label": "Controller feedback 101",
+        "action": "action[113]",
+        "span": "[113:114]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_101",
+        "target": "state_101",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_101"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_102",
+        "index": 114,
+        "label": "Controller feedback 102",
+        "action": "action[114]",
+        "span": "[114:115]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_102",
+        "target": "state_102",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_102"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_103",
+        "index": 115,
+        "label": "Controller feedback 103",
+        "action": "action[115]",
+        "span": "[115:116]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_103",
+        "target": "state_103",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_103"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_104",
+        "index": 116,
+        "label": "Controller feedback 104",
+        "action": "action[116]",
+        "span": "[116:117]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_104",
+        "target": "state_104",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_104"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_105",
+        "index": 117,
+        "label": "Controller feedback 105",
+        "action": "action[117]",
+        "span": "[117:118]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_105",
+        "target": "state_105",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_105"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_106",
+        "index": 118,
+        "label": "Controller feedback 106",
+        "action": "action[118]",
+        "span": "[118:119]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_106",
+        "target": "state_106",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_106"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_107",
+        "index": 119,
+        "label": "Controller feedback 107",
+        "action": "action[119]",
+        "span": "[119:120]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_107",
+        "target": "state_107",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_107"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_108",
+        "index": 120,
+        "label": "Controller feedback 108",
+        "action": "action[120]",
+        "span": "[120:121]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_108",
+        "target": "state_108",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_108"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_109",
+        "index": 121,
+        "label": "Controller feedback 109",
+        "action": "action[121]",
+        "span": "[121:122]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_109",
+        "target": "state_109",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_109"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_110",
+        "index": 122,
+        "label": "Controller feedback 110",
+        "action": "action[122]",
+        "span": "[122:123]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_110",
+        "target": "state_110",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_110"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feedback_111",
+        "index": 123,
+        "label": "Controller feedback 111",
+        "action": "action[123]",
+        "span": "[123:124]",
+        "dim": 1,
+        "source": "persistent controller state; zero transmission",
+        "actuator": "state_111",
+        "target": "state_111",
+        "targetType": "custom",
+        "targetMode": "named",
+        "joint": "FL_abad_joint",
+        "mode": "controller_state_feedback",
+        "scale": "state * 1",
+        "control": {
+          "mode": "torque",
+          "kp": 0,
+          "kd": 0,
+          "scale": 1,
+          "offset": 0,
+          "limit": 10000000,
+          "sign": 1,
+          "initialAngle": 0
+        },
+        "requirements": [
+          {
+            "kind": "actuator",
+            "names": [
+              "state_111"
+            ]
+          }
+        ]
+      }
+    ],
+    "jointAssignments": {
+      "physical_00": "FL_abad_joint",
+      "physical_01": "FL_thigh_joint",
+      "physical_02": "FL_calf_joint",
+      "physical_03": "FR_abad_joint",
+      "physical_04": "FR_thigh_joint",
+      "physical_05": "FR_calf_joint",
+      "physical_06": "RL_abad_joint",
+      "physical_07": "RL_thigh_joint",
+      "physical_08": "RL_calf_joint",
+      "physical_09": "RR_abad_joint",
+      "physical_10": "RR_thigh_joint",
+      "physical_11": "RR_calf_joint",
+      "feedback_000": "state_000",
+      "feedback_001": "state_001",
+      "feedback_002": "state_002",
+      "feedback_003": "state_003",
+      "feedback_004": "state_004",
+      "feedback_005": "state_005",
+      "feedback_006": "state_006",
+      "feedback_007": "state_007",
+      "feedback_008": "state_008",
+      "feedback_009": "state_009",
+      "feedback_010": "state_010",
+      "feedback_011": "state_011",
+      "feedback_012": "state_012",
+      "feedback_013": "state_013",
+      "feedback_014": "state_014",
+      "feedback_015": "state_015",
+      "feedback_016": "state_016",
+      "feedback_017": "state_017",
+      "feedback_018": "state_018",
+      "feedback_019": "state_019",
+      "feedback_020": "state_020",
+      "feedback_021": "state_021",
+      "feedback_022": "state_022",
+      "feedback_023": "state_023",
+      "feedback_024": "state_024",
+      "feedback_025": "state_025",
+      "feedback_026": "state_026",
+      "feedback_027": "state_027",
+      "feedback_028": "state_028",
+      "feedback_029": "state_029",
+      "feedback_030": "state_030",
+      "feedback_031": "state_031",
+      "feedback_032": "state_032",
+      "feedback_033": "state_033",
+      "feedback_034": "state_034",
+      "feedback_035": "state_035",
+      "feedback_036": "state_036",
+      "feedback_037": "state_037",
+      "feedback_038": "state_038",
+      "feedback_039": "state_039",
+      "feedback_040": "state_040",
+      "feedback_041": "state_041",
+      "feedback_042": "state_042",
+      "feedback_043": "state_043",
+      "feedback_044": "state_044",
+      "feedback_045": "state_045",
+      "feedback_046": "state_046",
+      "feedback_047": "state_047",
+      "feedback_048": "state_048",
+      "feedback_049": "state_049",
+      "feedback_050": "state_050",
+      "feedback_051": "state_051",
+      "feedback_052": "state_052",
+      "feedback_053": "state_053",
+      "feedback_054": "state_054",
+      "feedback_055": "state_055",
+      "feedback_056": "state_056",
+      "feedback_057": "state_057",
+      "feedback_058": "state_058",
+      "feedback_059": "state_059",
+      "feedback_060": "state_060",
+      "feedback_061": "state_061",
+      "feedback_062": "state_062",
+      "feedback_063": "state_063",
+      "feedback_064": "state_064",
+      "feedback_065": "state_065",
+      "feedback_066": "state_066",
+      "feedback_067": "state_067",
+      "feedback_068": "state_068",
+      "feedback_069": "state_069",
+      "feedback_070": "state_070",
+      "feedback_071": "state_071",
+      "feedback_072": "state_072",
+      "feedback_073": "state_073",
+      "feedback_074": "state_074",
+      "feedback_075": "state_075",
+      "feedback_076": "state_076",
+      "feedback_077": "state_077",
+      "feedback_078": "state_078",
+      "feedback_079": "state_079",
+      "feedback_080": "state_080",
+      "feedback_081": "state_081",
+      "feedback_082": "state_082",
+      "feedback_083": "state_083",
+      "feedback_084": "state_084",
+      "feedback_085": "state_085",
+      "feedback_086": "state_086",
+      "feedback_087": "state_087",
+      "feedback_088": "state_088",
+      "feedback_089": "state_089",
+      "feedback_090": "state_090",
+      "feedback_091": "state_091",
+      "feedback_092": "state_092",
+      "feedback_093": "state_093",
+      "feedback_094": "state_094",
+      "feedback_095": "state_095",
+      "feedback_096": "state_096",
+      "feedback_097": "state_097",
+      "feedback_098": "state_098",
+      "feedback_099": "state_099",
+      "feedback_100": "state_100",
+      "feedback_101": "state_101",
+      "feedback_102": "state_102",
+      "feedback_103": "state_103",
+      "feedback_104": "state_104",
+      "feedback_105": "state_105",
+      "feedback_106": "state_106",
+      "feedback_107": "state_107",
+      "feedback_108": "state_108",
+      "feedback_109": "state_109",
+      "feedback_110": "state_110",
+      "feedback_111": "state_111"
+    },
+    "removedJointAssignments": {},
+    "control": {
+      "physical_00": {
+        "mode": "pd",
+        "kp": 5,
+        "kd": 0.1,
+        "scale": 1,
+        "offset": 0,
+        "sign": 1,
+        "initialAngle": 0,
+        "limit": 0.800000011920929,
+        "actuatorDynamics": {
+          "type": "capped_position",
+          "effortLimit": 0.490333
+        }
+      },
+      "physical_01": {
+        "mode": "pd",
+        "kp": 5,
+        "kd": 0.1,
+        "scale": 1,
+        "offset": 0,
+        "sign": 1,
+        "initialAngle": 0.6144833853239036,
+        "limit": 1.8980000615119934,
+        "actuatorDynamics": {
+          "type": "capped_position",
+          "effortLimit": 0.490333
+        }
+      },
+      "physical_02": {
+        "mode": "pd",
+        "kp": 5,
+        "kd": 0.1,
+        "scale": 1,
+        "offset": 0,
+        "sign": 1,
+        "initialAngle": 0.23604504633439105,
+        "limit": 1.5960000529885292,
+        "actuatorDynamics": {
+          "type": "capped_position",
+          "effortLimit": 0.490333
+        }
+      },
+      "physical_03": {
+        "mode": "pd",
+        "kp": 5,
+        "kd": 0.1,
+        "scale": 1,
+        "offset": 0,
+        "sign": 1,
+        "initialAngle": 0,
+        "limit": 0.800000011920929,
+        "actuatorDynamics": {
+          "type": "capped_position",
+          "effortLimit": 0.490333
+        }
+      },
+      "physical_04": {
+        "mode": "pd",
+        "kp": 5,
+        "kd": 0.1,
+        "scale": 1,
+        "offset": 0,
+        "sign": 1,
+        "initialAngle": 0.6144833853239036,
+        "limit": 1.8980000615119934,
+        "actuatorDynamics": {
+          "type": "capped_position",
+          "effortLimit": 0.490333
+        }
+      },
+      "physical_05": {
+        "mode": "pd",
+        "kp": 5,
+        "kd": 0.1,
+        "scale": 1,
+        "offset": 0,
+        "sign": 1,
+        "initialAngle": -0.23595779465441002,
+        "limit": 1.5960000529885292,
+        "actuatorDynamics": {
+          "type": "capped_position",
+          "effortLimit": 0.490333
+        }
+      },
+      "physical_06": {
+        "mode": "pd",
+        "kp": 5,
+        "kd": 0.1,
+        "scale": 1,
+        "offset": 0,
+        "sign": 1,
+        "initialAngle": 0,
+        "limit": 0.800000011920929,
+        "actuatorDynamics": {
+          "type": "capped_position",
+          "effortLimit": 0.490333
+        }
+      },
+      "physical_07": {
+        "mode": "pd",
+        "kp": 5,
+        "kd": 0.1,
+        "scale": 1,
+        "offset": 0,
+        "sign": 1,
+        "initialAngle": 0.6144833853239036,
+        "limit": 1.8980000615119934,
+        "actuatorDynamics": {
+          "type": "capped_position",
+          "effortLimit": 0.490333
+        }
+      },
+      "physical_08": {
+        "mode": "pd",
+        "kp": 5,
+        "kd": 0.1,
+        "scale": 1,
+        "offset": 0,
+        "sign": 1,
+        "initialAngle": 0.23604504633439105,
+        "limit": 1.5960000529885292,
+        "actuatorDynamics": {
+          "type": "capped_position",
+          "effortLimit": 0.490333
+        }
+      },
+      "physical_09": {
+        "mode": "pd",
+        "kp": 5,
+        "kd": 0.1,
+        "scale": 1,
+        "offset": 0,
+        "sign": 1,
+        "initialAngle": 0,
+        "limit": 0.800000011920929,
+        "actuatorDynamics": {
+          "type": "capped_position",
+          "effortLimit": 0.490333
+        }
+      },
+      "physical_10": {
+        "mode": "pd",
+        "kp": 5,
+        "kd": 0.1,
+        "scale": 1,
+        "offset": 0,
+        "sign": 1,
+        "initialAngle": 0.6144833853239036,
+        "limit": 1.8980000615119934,
+        "actuatorDynamics": {
+          "type": "capped_position",
+          "effortLimit": 0.490333
+        }
+      },
+      "physical_11": {
+        "mode": "pd",
+        "kp": 5,
+        "kd": 0.1,
+        "scale": 1,
+        "offset": 0,
+        "sign": 1,
+        "initialAngle": 0.18395780179488885,
+        "limit": 1.5960000529885292,
+        "actuatorDynamics": {
+          "type": "capped_position",
+          "effortLimit": 0.490333
+        }
+      },
+      "feedback_000": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_001": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_002": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_003": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_004": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_005": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_006": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_007": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_008": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_009": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_010": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_011": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_012": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_013": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_014": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_015": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_016": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_017": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_018": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_019": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_020": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_021": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_022": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_023": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_024": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_025": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_026": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_027": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_028": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_029": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_030": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_031": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_032": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_033": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_034": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_035": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_036": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_037": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_038": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_039": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_040": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_041": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_042": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_043": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_044": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_045": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_046": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_047": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_048": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_049": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_050": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_051": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_052": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_053": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_054": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_055": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_056": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_057": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_058": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_059": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_060": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_061": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_062": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_063": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_064": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_065": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_066": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_067": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_068": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_069": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_070": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_071": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_072": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_073": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_074": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_075": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_076": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_077": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_078": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_079": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_080": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_081": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_082": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_083": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_084": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_085": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_086": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_087": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_088": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_089": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_090": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_091": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_092": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_093": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_094": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_095": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_096": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_097": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_098": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_099": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_100": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_101": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_102": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_103": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_104": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_105": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_106": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_107": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_108": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_109": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_110": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      },
+      "feedback_111": {
+        "mode": "torque",
+        "kp": 0,
+        "kd": 0,
+        "scale": 1,
+        "offset": 0,
+        "limit": 10000000,
+        "sign": 1,
+        "initialAngle": 0
+      }
+    }
+  },
+  "runtime": {
+    "engine": "generic_runtime",
+    "family": "virtual_servo_contract",
+    "projectId": "pydog-gen4-walk-v30",
+    "controllerHint": "GenericPolicyRuntimeController",
+    "timing": {
+      "simDt": 0.001,
+      "controlDt": 0.02,
+      "decimation": 20,
+      "frequencyHz": 50
+    },
+    "command": {
+      "enabled": true,
+      "components": [
+        "vx",
+        "vy",
+        "yaw_rate"
+      ],
+      "defaults": [
+        0,
+        0,
+        0
+      ],
+      "limits": [
+        [
+          -0.06,
+          0.06
+        ],
+        [
+          -0.025,
+          0.025
+        ],
+        [
+          -0.12,
+          0.12
+        ]
+      ],
+      "control": {
+        "exposeToControl": true,
+        "deadzone": 0.08,
+        "releaseBehavior": "zero",
+        "initial": [
+          0,
+          0,
+          0
+        ],
+        "axisSigns": {
+          "vx": -1,
+          "vy": 1,
+          "yaw": 1
+        },
+        "presets": {
+          "walk": [
+            0.04,
+            0,
+            0
+          ],
+          "stop": [
+            0,
+            0,
+            0
+          ]
+        },
+        "walkPreset": [
+          0.04,
+          0,
+          0
+        ]
+      }
+    },
+    "pose": {
+      "resetKeyframe": "candidate_start",
+      "defaultKeyframe": "candidate_start",
+      "rootOffset": [
+        0,
+        0,
+        0.10700000077486038
+      ],
+      "jointPositions": {
+        "FL_abad_joint": 0,
+        "FL_thigh_joint": 0.6144833853239036,
+        "FL_calf_joint": 0.23604504633439105,
+        "FR_abad_joint": 0,
+        "FR_thigh_joint": 0.6144833853239036,
+        "FR_calf_joint": -0.23595779465441002,
+        "RL_abad_joint": 0,
+        "RL_thigh_joint": 0.6144833853239036,
+        "RL_calf_joint": 0.23604504633439105,
+        "RR_abad_joint": 0,
+        "RR_thigh_joint": 0.6144833853239036,
+        "RR_calf_joint": 0.18395780179488885
+      },
+      "groundPreset": "simready-grid",
+      "rootZMode": "absolute",
+      "sourceGroundZ": 0
+    },
+    "state": {
+      "phaseClock": false,
+      "previousAction": true,
+      "actionHistory": false,
+      "motorTargetCache": false,
+      "virtualServoState": false,
+      "footContact": false,
+      "referenceMotion": false,
+      "actuatorNet": false,
+      "extraOnnxInput": false,
+      "normalization": false
+    },
+    "adapters": {
+      "version": 1,
+      "adapters": [
+        {
+          "id": "command",
+          "type": "command",
+          "enabled": true,
+          "params": {
+            "dim": 3,
+            "components": "vx, vy, yaw_rate",
+            "defaultValue": "0, 0, 0",
+            "initialValue": "0, 0, 0",
+            "min": "-0.06,-0.025,-0.12",
+            "max": "0.06,0.025,0.12",
+            "exposeToControl": true,
+            "deadzone": 0.08,
+            "releaseBehavior": "zero",
+            "forwardSign": -1,
+            "strafeSign": 1,
+            "turnSign": 1,
+            "walkPreset": "0.04,0,0",
+            "stopPreset": "0,0,0",
+            "normalize": false,
+            "idleActionMode": "policy"
+          },
+          "outputs": [
+            {
+              "target": "internal",
+              "start": 0,
+              "length": 3
+            }
+          ]
+        },
+        {
+          "id": "previous_action",
+          "type": "previous_action",
+          "enabled": true,
+          "params": {
+            "actionDim": 124,
+            "initial": "zero",
+            "useClipped": false,
+            "useScaled": false
+          },
+          "outputs": [
+            {
+              "target": "internal",
+              "start": 0,
+              "length": 124
+            }
+          ]
+        },
+        {
+          "id": "constant_zero",
+          "type": "constant_zero",
+          "label": "Constant",
+          "enabled": true,
+          "params": {
+            "value": 0
+          },
+          "outputs": [
+            {
+              "target": "observation",
+              "start": 9,
+              "length": 4
+            }
+          ]
+        }
+      ]
+    },
+    "notes": [
+      "Contract-owned observer, phase and history; no additional normalization or global action clipping.",
+      "Internal state outputs are never physical motors. Hardware qualification remains separate."
+    ]
+  },
+  "validation": {},
+  "sim2real": {
+    "schemaVersion": "1.0",
+    "kind": "stackforce.sim2real.project-profile",
+    "actuator": {
+      "deviceFamilyId": null,
+      "parameterMode": "preserve",
+      "bindings": [
+        {
+          "id": "actuator:0",
+          "kind": "actuator",
+          "policySlot": 0,
+          "semanticName": "FL_abad_joint",
+          "simEntity": "FL_abad_joint",
+          "hardwareEndpointId": null,
+          "actuatorCalibration": {
+            "direction": 1,
+            "zeroOffsetRad": 0,
+            "commandScale": 1,
+            "softMinRad": -3.141592653589793,
+            "softMaxRad": 3.141592653589793,
+            "pulseMinUs": 500,
+            "pulseCenterUs": 1520,
+            "pulseMaxUs": 2500,
+            "aligned": false
+          },
+          "transportConfig": {
+            "busSpeedRaw": 0,
+            "busAccelerationRaw": 0,
+            "hardwareP": 32,
+            "hardwareD": 0,
+            "hardwareI": 0,
+            "hardwareMaxAcceleration": 0,
+            "hardwareTorqueLimitRaw": 1000
+          },
+          "runEnabled": false
+        },
+        {
+          "id": "actuator:1",
+          "kind": "actuator",
+          "policySlot": 1,
+          "semanticName": "FL_thigh_joint",
+          "simEntity": "FL_thigh_joint",
+          "hardwareEndpointId": null,
+          "actuatorCalibration": {
+            "direction": 1,
+            "zeroOffsetRad": 0,
+            "commandScale": 1,
+            "softMinRad": -3.141592653589793,
+            "softMaxRad": 3.141592653589793,
+            "pulseMinUs": 500,
+            "pulseCenterUs": 1520,
+            "pulseMaxUs": 2500,
+            "aligned": false
+          },
+          "transportConfig": {
+            "busSpeedRaw": 0,
+            "busAccelerationRaw": 0,
+            "hardwareP": 32,
+            "hardwareD": 0,
+            "hardwareI": 0,
+            "hardwareMaxAcceleration": 0,
+            "hardwareTorqueLimitRaw": 1000
+          },
+          "runEnabled": false
+        },
+        {
+          "id": "actuator:2",
+          "kind": "actuator",
+          "policySlot": 2,
+          "semanticName": "FL_calf_joint",
+          "simEntity": "FL_calf_joint",
+          "hardwareEndpointId": null,
+          "actuatorCalibration": {
+            "direction": 1,
+            "zeroOffsetRad": 0,
+            "commandScale": 1,
+            "softMinRad": -3.141592653589793,
+            "softMaxRad": 3.141592653589793,
+            "pulseMinUs": 500,
+            "pulseCenterUs": 1520,
+            "pulseMaxUs": 2500,
+            "aligned": false
+          },
+          "transportConfig": {
+            "busSpeedRaw": 0,
+            "busAccelerationRaw": 0,
+            "hardwareP": 32,
+            "hardwareD": 0,
+            "hardwareI": 0,
+            "hardwareMaxAcceleration": 0,
+            "hardwareTorqueLimitRaw": 1000
+          },
+          "runEnabled": false
+        },
+        {
+          "id": "actuator:3",
+          "kind": "actuator",
+          "policySlot": 3,
+          "semanticName": "FR_abad_joint",
+          "simEntity": "FR_abad_joint",
+          "hardwareEndpointId": null,
+          "actuatorCalibration": {
+            "direction": 1,
+            "zeroOffsetRad": 0,
+            "commandScale": 1,
+            "softMinRad": -3.141592653589793,
+            "softMaxRad": 3.141592653589793,
+            "pulseMinUs": 500,
+            "pulseCenterUs": 1520,
+            "pulseMaxUs": 2500,
+            "aligned": false
+          },
+          "transportConfig": {
+            "busSpeedRaw": 0,
+            "busAccelerationRaw": 0,
+            "hardwareP": 32,
+            "hardwareD": 0,
+            "hardwareI": 0,
+            "hardwareMaxAcceleration": 0,
+            "hardwareTorqueLimitRaw": 1000
+          },
+          "runEnabled": false
+        },
+        {
+          "id": "actuator:4",
+          "kind": "actuator",
+          "policySlot": 4,
+          "semanticName": "FR_thigh_joint",
+          "simEntity": "FR_thigh_joint",
+          "hardwareEndpointId": null,
+          "actuatorCalibration": {
+            "direction": 1,
+            "zeroOffsetRad": 0,
+            "commandScale": 1,
+            "softMinRad": -3.141592653589793,
+            "softMaxRad": 3.141592653589793,
+            "pulseMinUs": 500,
+            "pulseCenterUs": 1520,
+            "pulseMaxUs": 2500,
+            "aligned": false
+          },
+          "transportConfig": {
+            "busSpeedRaw": 0,
+            "busAccelerationRaw": 0,
+            "hardwareP": 32,
+            "hardwareD": 0,
+            "hardwareI": 0,
+            "hardwareMaxAcceleration": 0,
+            "hardwareTorqueLimitRaw": 1000
+          },
+          "runEnabled": false
+        },
+        {
+          "id": "actuator:5",
+          "kind": "actuator",
+          "policySlot": 5,
+          "semanticName": "FR_calf_joint",
+          "simEntity": "FR_calf_joint",
+          "hardwareEndpointId": null,
+          "actuatorCalibration": {
+            "direction": 1,
+            "zeroOffsetRad": 0,
+            "commandScale": 1,
+            "softMinRad": -3.141592653589793,
+            "softMaxRad": 3.141592653589793,
+            "pulseMinUs": 500,
+            "pulseCenterUs": 1520,
+            "pulseMaxUs": 2500,
+            "aligned": false
+          },
+          "transportConfig": {
+            "busSpeedRaw": 0,
+            "busAccelerationRaw": 0,
+            "hardwareP": 32,
+            "hardwareD": 0,
+            "hardwareI": 0,
+            "hardwareMaxAcceleration": 0,
+            "hardwareTorqueLimitRaw": 1000
+          },
+          "runEnabled": false
+        },
+        {
+          "id": "actuator:6",
+          "kind": "actuator",
+          "policySlot": 6,
+          "semanticName": "RL_abad_joint",
+          "simEntity": "RL_abad_joint",
+          "hardwareEndpointId": null,
+          "actuatorCalibration": {
+            "direction": 1,
+            "zeroOffsetRad": 0,
+            "commandScale": 1,
+            "softMinRad": -3.141592653589793,
+            "softMaxRad": 3.141592653589793,
+            "pulseMinUs": 500,
+            "pulseCenterUs": 1520,
+            "pulseMaxUs": 2500,
+            "aligned": false
+          },
+          "transportConfig": {
+            "busSpeedRaw": 0,
+            "busAccelerationRaw": 0,
+            "hardwareP": 32,
+            "hardwareD": 0,
+            "hardwareI": 0,
+            "hardwareMaxAcceleration": 0,
+            "hardwareTorqueLimitRaw": 1000
+          },
+          "runEnabled": false
+        },
+        {
+          "id": "actuator:7",
+          "kind": "actuator",
+          "policySlot": 7,
+          "semanticName": "RL_thigh_joint",
+          "simEntity": "RL_thigh_joint",
+          "hardwareEndpointId": null,
+          "actuatorCalibration": {
+            "direction": 1,
+            "zeroOffsetRad": 0,
+            "commandScale": 1,
+            "softMinRad": -3.141592653589793,
+            "softMaxRad": 3.141592653589793,
+            "pulseMinUs": 500,
+            "pulseCenterUs": 1520,
+            "pulseMaxUs": 2500,
+            "aligned": false
+          },
+          "transportConfig": {
+            "busSpeedRaw": 0,
+            "busAccelerationRaw": 0,
+            "hardwareP": 32,
+            "hardwareD": 0,
+            "hardwareI": 0,
+            "hardwareMaxAcceleration": 0,
+            "hardwareTorqueLimitRaw": 1000
+          },
+          "runEnabled": false
+        },
+        {
+          "id": "actuator:8",
+          "kind": "actuator",
+          "policySlot": 8,
+          "semanticName": "RL_calf_joint",
+          "simEntity": "RL_calf_joint",
+          "hardwareEndpointId": null,
+          "actuatorCalibration": {
+            "direction": 1,
+            "zeroOffsetRad": 0,
+            "commandScale": 1,
+            "softMinRad": -3.141592653589793,
+            "softMaxRad": 3.141592653589793,
+            "pulseMinUs": 500,
+            "pulseCenterUs": 1520,
+            "pulseMaxUs": 2500,
+            "aligned": false
+          },
+          "transportConfig": {
+            "busSpeedRaw": 0,
+            "busAccelerationRaw": 0,
+            "hardwareP": 32,
+            "hardwareD": 0,
+            "hardwareI": 0,
+            "hardwareMaxAcceleration": 0,
+            "hardwareTorqueLimitRaw": 1000
+          },
+          "runEnabled": false
+        },
+        {
+          "id": "actuator:9",
+          "kind": "actuator",
+          "policySlot": 9,
+          "semanticName": "RR_abad_joint",
+          "simEntity": "RR_abad_joint",
+          "hardwareEndpointId": null,
+          "actuatorCalibration": {
+            "direction": 1,
+            "zeroOffsetRad": 0,
+            "commandScale": 1,
+            "softMinRad": -3.141592653589793,
+            "softMaxRad": 3.141592653589793,
+            "pulseMinUs": 500,
+            "pulseCenterUs": 1520,
+            "pulseMaxUs": 2500,
+            "aligned": false
+          },
+          "transportConfig": {
+            "busSpeedRaw": 0,
+            "busAccelerationRaw": 0,
+            "hardwareP": 32,
+            "hardwareD": 0,
+            "hardwareI": 0,
+            "hardwareMaxAcceleration": 0,
+            "hardwareTorqueLimitRaw": 1000
+          },
+          "runEnabled": false
+        },
+        {
+          "id": "actuator:10",
+          "kind": "actuator",
+          "policySlot": 10,
+          "semanticName": "RR_thigh_joint",
+          "simEntity": "RR_thigh_joint",
+          "hardwareEndpointId": null,
+          "actuatorCalibration": {
+            "direction": 1,
+            "zeroOffsetRad": 0,
+            "commandScale": 1,
+            "softMinRad": -3.141592653589793,
+            "softMaxRad": 3.141592653589793,
+            "pulseMinUs": 500,
+            "pulseCenterUs": 1520,
+            "pulseMaxUs": 2500,
+            "aligned": false
+          },
+          "transportConfig": {
+            "busSpeedRaw": 0,
+            "busAccelerationRaw": 0,
+            "hardwareP": 32,
+            "hardwareD": 0,
+            "hardwareI": 0,
+            "hardwareMaxAcceleration": 0,
+            "hardwareTorqueLimitRaw": 1000
+          },
+          "runEnabled": false
+        },
+        {
+          "id": "actuator:11",
+          "kind": "actuator",
+          "policySlot": 11,
+          "semanticName": "RR_calf_joint",
+          "simEntity": "RR_calf_joint",
+          "hardwareEndpointId": null,
+          "actuatorCalibration": {
+            "direction": 1,
+            "zeroOffsetRad": 0,
+            "commandScale": 1,
+            "softMinRad": -3.141592653589793,
+            "softMaxRad": 3.141592653589793,
+            "pulseMinUs": 500,
+            "pulseCenterUs": 1520,
+            "pulseMaxUs": 2500,
+            "aligned": false
+          },
+          "transportConfig": {
+            "busSpeedRaw": 0,
+            "busAccelerationRaw": 0,
+            "hardwareP": 32,
+            "hardwareD": 0,
+            "hardwareI": 0,
+            "hardwareMaxAcceleration": 0,
+            "hardwareTorqueLimitRaw": 1000
+          },
+          "runEnabled": false
+        }
+      ]
+    },
+    "sensor": {
+      "endpointId": null,
+      "bindings": [
+        {
+          "id": "sensor:base_imu",
+          "kind": "imu",
+          "policySlot": null,
+          "semanticName": "base_imu",
+          "simEntity": "base_imu",
+          "hardwareEndpointId": null,
+          "imuCalibration": {
+            "bodyFromSensorWxyz": [
+              1,
+              0,
+              0,
+              0
+            ],
+            "worldAlignmentWxyz": [
+              1,
+              0,
+              0,
+              0
+            ],
+            "gyroBiasRadS": [
+              0,
+              0,
+              0
+            ],
+            "accelBiasMs2": [
+              0,
+              0,
+              0
+            ],
+            "timeOffsetMs": 0
+          },
+          "virtualOrientationWxyz": [
+            1,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    "feedback": {
+      "enabled": true,
+      "devices": {
+        "hardware": false,
+        "virtual": true
+      },
+      "source": "virtual",
+      "routes": {},
+      "virtualControls": {}
+    },
+    "loops": {
+      "pwmHz": 50,
+      "webTelemetryHz": 20
+    },
+    "deviceConfigs": {},
+    "extensions": {
+      "stackforce.virtual-servo-contract.v1": {
+        "schemaVersion": 1,
+        "contract": {
+          "schema": "stackforce.virtual-servo-deployment.v1",
+          "iteration": 1499,
+          "actor_sha256": "807f39cb0b866a6b71c91658fbd97d2b342f83df60ab7efa855f8ce06f1cfb95",
+          "joint_names": [
+            "FL_abad_joint",
+            "FL_thigh_joint",
+            "FL_calf_joint",
+            "FR_abad_joint",
+            "FR_thigh_joint",
+            "FR_calf_joint",
+            "RL_abad_joint",
+            "RL_thigh_joint",
+            "RL_calf_joint",
+            "RR_abad_joint",
+            "RR_thigh_joint",
+            "RR_calf_joint"
+          ],
+          "neutral": [
+            0,
+            -0.328000009059906,
+            0.026000000536441803,
+            0,
+            -0.328000009059906,
+            -0.026000000536441803,
+            0,
+            -0.328000009059906,
+            0.026000000536441803,
+            0,
+            -0.328000009059906,
+            -0.026000000536441803
+          ],
+          "action_scale": [
+            0.4000000059604645,
+            0.6499999761581421,
+            0.6499999761581421,
+            0.4000000059604645,
+            0.6499999761581421,
+            0.6499999761581421,
+            0.4000000059604645,
+            0.6499999761581421,
+            0.6499999761581421,
+            0.4000000059604645,
+            0.6499999761581421,
+            0.6499999761581421
+          ],
+          "lower": [
+            -0.800000011920929,
+            -1.5700000524520874,
+            -1.5700000524520874,
+            -0.800000011920929,
+            -1.5700000524520874,
+            -1.5700000524520874,
+            -0.800000011920929,
+            -1.5700000524520874,
+            -1.5700000524520874,
+            -0.800000011920929,
+            -1.5700000524520874,
+            -1.5700000524520874
+          ],
+          "upper": [
+            0.800000011920929,
+            1.5700000524520874,
+            1.5700000524520874,
+            0.800000011920929,
+            1.5700000524520874,
+            1.5700000524520874,
+            0.800000011920929,
+            1.5700000524520874,
+            1.5700000524520874,
+            0.800000011920929,
+            1.5700000524520874,
+            1.5700000524520874
+          ],
+          "action_clip": 1.8,
+          "control_dt_s": 0.02,
+          "virtual_servo": {
+            "kp": 35,
+            "kd": 1.2,
+            "inertia": 1
+          },
+          "observation": {
+            "frameTerms": [
+              "base_angular_velocity",
+              "projected_gravity",
+              "commands",
+              "phase_sin_cos",
+              "virtual_joint_position_error",
+              "virtual_joint_velocity",
+              "applied_actions",
+              "support_leg_command"
+            ],
+            "channels": [
+              {
+                "observationIndex": 0,
+                "source": "base_angular_velocity",
+                "component": 0,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 1,
+                "source": "base_angular_velocity",
+                "component": 1,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 2,
+                "source": "base_angular_velocity",
+                "component": 2,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 3,
+                "source": "projected_gravity",
+                "component": 0,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 4,
+                "source": "projected_gravity",
+                "component": 1,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 5,
+                "source": "projected_gravity",
+                "component": 2,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 6,
+                "source": "commands",
+                "component": 0,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 7,
+                "source": "commands",
+                "component": 1,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 8,
+                "source": "commands",
+                "component": 2,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 9,
+                "source": "phase_sin_cos",
+                "component": 0,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 10,
+                "source": "phase_sin_cos",
+                "component": 1,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 11,
+                "source": "virtual_joint_position_error",
+                "component": 0,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 12,
+                "source": "virtual_joint_position_error",
+                "component": 1,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 13,
+                "source": "virtual_joint_position_error",
+                "component": 2,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 14,
+                "source": "virtual_joint_position_error",
+                "component": 3,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 15,
+                "source": "virtual_joint_position_error",
+                "component": 4,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 16,
+                "source": "virtual_joint_position_error",
+                "component": 5,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 17,
+                "source": "virtual_joint_position_error",
+                "component": 6,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 18,
+                "source": "virtual_joint_position_error",
+                "component": 7,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 19,
+                "source": "virtual_joint_position_error",
+                "component": 8,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 20,
+                "source": "virtual_joint_position_error",
+                "component": 9,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 21,
+                "source": "virtual_joint_position_error",
+                "component": 10,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 22,
+                "source": "virtual_joint_position_error",
+                "component": 11,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 23,
+                "source": "virtual_joint_velocity",
+                "component": 0,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 24,
+                "source": "virtual_joint_velocity",
+                "component": 1,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 25,
+                "source": "virtual_joint_velocity",
+                "component": 2,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 26,
+                "source": "virtual_joint_velocity",
+                "component": 3,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 27,
+                "source": "virtual_joint_velocity",
+                "component": 4,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 28,
+                "source": "virtual_joint_velocity",
+                "component": 5,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 29,
+                "source": "virtual_joint_velocity",
+                "component": 6,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 30,
+                "source": "virtual_joint_velocity",
+                "component": 7,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 31,
+                "source": "virtual_joint_velocity",
+                "component": 8,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 32,
+                "source": "virtual_joint_velocity",
+                "component": 9,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 33,
+                "source": "virtual_joint_velocity",
+                "component": 10,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 34,
+                "source": "virtual_joint_velocity",
+                "component": 11,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 35,
+                "source": "applied_actions",
+                "component": 0,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 36,
+                "source": "applied_actions",
+                "component": 1,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 37,
+                "source": "applied_actions",
+                "component": 2,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 38,
+                "source": "applied_actions",
+                "component": 3,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 39,
+                "source": "applied_actions",
+                "component": 4,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 40,
+                "source": "applied_actions",
+                "component": 5,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 41,
+                "source": "applied_actions",
+                "component": 6,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 42,
+                "source": "applied_actions",
+                "component": 7,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 43,
+                "source": "applied_actions",
+                "component": 8,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 44,
+                "source": "applied_actions",
+                "component": 9,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 45,
+                "source": "applied_actions",
+                "component": 10,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 46,
+                "source": "applied_actions",
+                "component": 11,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 47,
+                "source": "support_leg_command",
+                "component": 0,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 48,
+                "source": "support_leg_command",
+                "component": 1,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 49,
+                "source": "support_leg_command",
+                "component": 2,
+                "scale": 1,
+                "bias": 0
+              },
+              {
+                "observationIndex": 50,
+                "source": "support_leg_command",
+                "component": 3,
+                "scale": 1,
+                "bias": 0
+              }
+            ],
+            "frameDim": 51,
+            "historyFrames": 6,
+            "history": {
+              "order": "old_to_new",
+              "initialize": "zero"
+            },
+            "extraObservationCount": 0,
+            "requestedProfileExtraObservationCount": 0,
+            "heightObservationCount": 0,
+            "totalDim": 306,
+            "scales": {
+              "linearVelocity": 1,
+              "angularVelocity": 1,
+              "commandLinearVelocity": 1,
+              "commandAngularVelocity": 1,
+              "jointPosition": 1,
+              "jointVelocity": 1
+            }
+          },
+          "phase_period_s": 1.5,
+          "phase_idle": {
+            "cycles": 0.75,
+            "commandThreshold": 0.000001
+          },
+          "constant_value": 0,
+          "default_command": [
+            0,
+            0,
+            0
+          ],
+          "training_command_ranges": {
+            "linearX": [
+              -0.06,
+              0.06
+            ],
+            "linearY": [
+              -0.025,
+              0.025
+            ],
+            "yaw": [
+              -0.12,
+              0.12
+            ]
+          },
+          "normalization": "embedded in the exported ONNX; no additional normalization",
+          "hardware_tested": false,
+          "physical_recovery_verified": false,
+          "recovery_task": null,
+          "support_leg_order": [
+            "FL",
+            "FR",
+            "RR",
+            "RL"
+          ],
+          "support_leg_phase_cue": {
+            "period_s": 1.5,
+            "phase_offsets": [
+              0,
+              0.5,
+              0.25,
+              0.75
+            ],
+            "swing_fraction": 0.2,
+            "command_threshold": 0.005
+          }
+        },
+        "layout": {
+          "physical": 12,
+          "state": 112,
+          "external": 13,
+          "frames": 5,
+          "frameDim": 125,
+          "actorFrameDim": 51,
+          "inputDim": 625,
+          "outputDim": 124,
+          "stateLayout": {
+            "count": [
+              0,
+              1
+            ],
+            "target": [
+              1,
+              13
+            ],
+            "observerTarget": [
+              13,
+              25
+            ],
+            "qhat": [
+              25,
+              37
+            ],
+            "dqhat": [
+              37,
+              49
+            ],
+            "previousAction": [
+              49,
+              61
+            ],
+            "latestFrame": [
+              61,
+              112
+            ]
+          },
+          "externalHints": {
+            "start": 9,
+            "dim": 4,
+            "components": [
+              "FL",
+              "FR",
+              "RR",
+              "RL"
+            ],
+            "default": [
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "actorSha256": "807f39cb0b866a6b71c91658fbd97d2b342f83df60ab7efa855f8ce06f1cfb95"
+      },
+      "stackforce.joint-coordinate-rebase.v1": {
+        "version": 1,
+        "jointShiftsRad": {
+          "FL_thigh_joint": 0.9424833943838096,
+          "FR_thigh_joint": 0.9424833943838096,
+          "RL_thigh_joint": 0.9424833943838096,
+          "RR_thigh_joint": 0.9424833943838096,
+          "FL_calf_joint": 0.21004504579794925,
+          "FR_calf_joint": -0.20995779411796822,
+          "RL_calf_joint": 0.21004504579794925,
+          "RR_calf_joint": 0.20995780233133066
+        },
+        "calibration": "mjcf-q-zero",
+        "policyCoordinates": "preserved"
+      },
+      "stackforce.example-template.v1": {
+        "schemaVersion": 1,
+        "templateId": "pydog-gen4-walk-v30-real",
+        "category": "sim2real",
+        "version": "2026-11-09",
+        "source": {
+          "zh": "Walk v30 · 1499",
+          "en": "Walk v30 · 1499"
+        },
+        "verification": {
+          "status": "unverified",
+          "scope": "hardware-deployment"
+        },
+        "openBehavior": {
+          "createNewJob": true,
+          "workflowStep": "sim2real",
+          "panel": "devices",
+          "autoStart": false
+        }
+      }
+    }
+  },
+  "gen4Qualification": {
+    "physicalActionDim": 12,
+    "controllerFeedbackDim": 112,
+    "hardwareDeployment": "unverified",
+    "simulation": "pending",
+    "mode": "virtual-servo-contract",
+    "note": "Walk v30 iteration 1499. Original course evaluation 9/13; velocity tracking remains incomplete. Hardware unverified."
+  }
+}

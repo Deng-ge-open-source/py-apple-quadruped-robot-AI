@@ -1,0 +1,161 @@
+{
+  "checked_date": "2026-11-14",
+  "source": "https://sim2real.stackforce.cc/api/examples/visibility",
+  "open_examples": [
+    {
+      "name": "向前小跑",
+      "sim2sim_id": "pydog-gen4-stand-forward",
+      "sim2real_id": "pydog-gen4-stand-forward-real"
+    },
+    {
+      "name": "全向小跑",
+      "sim2sim_id": "pydog-gen4-trot-v132-100",
+      "sim2real_id": "pydog-gen4-trot-v132-100-real"
+    },
+    {
+      "name": "慢行步态",
+      "sim2sim_id": "pydog-gen4-walk-v30",
+      "sim2real_id": "pydog-gen4-walk-v30-real"
+    },
+    {
+      "name": "跳跃步态",
+      "sim2sim_id": "pydog-gen4-bound",
+      "sim2real_id": "pydog-gen4-bound-real"
+    },
+    {
+      "name": "翻倒自起立",
+      "sim2sim_id": "pydog-gen4-stabilize",
+      "sim2real_id": "pydog-gen4-stabilize-real"
+    }
+  ],
+  "planned": [
+    {
+      "name": "轮滑步态",
+      "status": "后续开放"
+    }
+  ],
+  "gait_count": 4,
+  "recovery_actions": 1,
+  "media": [
+    {
+      "name": "向前小跑",
+      "example_id": "pydog-gen4-stand-forward",
+      "file": "docs/gaits/forward-trot.gif",
+      "source": "https://sim2real.stackforce.cc/example-thumbnails/pydog-gen4-stand-forward-simulation.gif",
+      "frames": 160,
+      "width": 720,
+      "height": 450,
+      "duration_ms": 8000,
+      "bytes": 4738038,
+      "sha256": "73cbf31f95088151e2b0d53477462935e1ce4dd5c5be1ab7b88e1005682841e9"
+    },
+    {
+      "name": "全向小跑",
+      "example_id": "pydog-gen4-trot-v132-100",
+      "file": "docs/gaits/omnidirectional-four-directions.gif",
+      "source": "https://sim2real.stackforce.cc/sim2real-examples/pydog-gen4-trot-v132-100.sim",
+      "frames": 176,
+      "width": 720,
+      "height": 450,
+      "duration_ms": 8800,
+      "bytes": 9085760,
+      "sha256": "64af45234cf02def1d01faf30d7f69fa988eb52bd5fb307b633541bef5bba987",
+      "source_type": "native MuJoCo policy rollout with directional annotations",
+      "motion_sequence": [
+        {
+          "direction": "前进",
+          "seconds": 2.2,
+          "ui_command": [
+            0.14,
+            0,
+            0
+          ],
+          "measured_displacement_m": [
+            -0.27837165328813074,
+            0.024944292431904366,
+            -0.005458596732762
+          ]
+        },
+        {
+          "direction": "后退",
+          "seconds": 2.2,
+          "ui_command": [
+            -0.14,
+            0,
+            0
+          ],
+          "measured_displacement_m": [
+            0.2954743308097765,
+            0.06073937302192031,
+            0.0046416484606076475
+          ]
+        },
+        {
+          "direction": "左移",
+          "seconds": 2.2,
+          "ui_command": [
+            0,
+            0.08,
+            0
+          ],
+          "measured_displacement_m": [
+            0.03406270228008393,
+            -0.18804927974366353,
+            -0.008916334804713308
+          ]
+        },
+        {
+          "direction": "右移",
+          "seconds": 2.2,
+          "ui_command": [
+            0,
+            -0.08,
+            0
+          ],
+          "measured_displacement_m": [
+            -0.04325667095182401,
+            0.19790226541593708,
+            0.010662699480826973
+          ]
+        }
+      ],
+      "policy_sha256": "f13fad763f2367dc4b5084148791555ab3f0e039c18f0d94cd70179aeea4c4fe"
+    },
+    {
+      "name": "慢行步态",
+      "example_id": "pydog-gen4-walk-v30",
+      "file": "docs/gaits/slow-walk.gif",
+      "source": "https://sim2real.stackforce.cc/example-thumbnails/pydog-gen4-walk-v30-simulation.gif",
+      "frames": 200,
+      "width": 720,
+      "height": 450,
+      "duration_ms": 10000,
+      "bytes": 6739415,
+      "sha256": "77027d7ddcc55971e8e9272dcf12fedf8224ddb2e2167f14763eb12de6801023"
+    },
+    {
+      "name": "跳跃步态",
+      "example_id": "pydog-gen4-bound",
+      "file": "docs/gaits/bound.gif",
+      "source": "https://sim2real.stackforce.cc/example-thumbnails/pydog-gen4-bound-simulation.gif",
+      "frames": 160,
+      "width": 720,
+      "height": 450,
+      "duration_ms": 8000,
+      "bytes": 2511838,
+      "sha256": "7db6bce117004f2c58335b72a848162a3f74adfe3dea0d1bb0e62551e9fe8904"
+    },
+    {
+      "name": "翻倒自起立",
+      "example_id": "pydog-gen4-stabilize",
+      "file": "docs/gaits/self-righting.gif",
+      "source": "https://sim2real.stackforce.cc/example-thumbnails/pydog-gen4-stabilize-simulation.gif",
+      "frames": 200,
+      "width": 720,
+      "height": 450,
+      "duration_ms": 10000,
+      "bytes": 5004957,
+      "sha256": "8b42b2e48f47888a8dd3c293e11b6b939ce4762e694d4dcea8a440f1344caddb"
+    }
+  ]
+}

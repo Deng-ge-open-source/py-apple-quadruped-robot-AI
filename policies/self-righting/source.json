@@ -1,0 +1,118 @@
+{
+  "name": "翻倒自起立",
+  "directory": "self-righting",
+  "example_id": "pydog-gen4-stabilize",
+  "downloaded_on": "2026-11-15",
+  "source_url": "https://sim2real.stackforce.cc/sim2real-examples/pydog-gen4-stabilize.sim",
+  "original_bundle_id": "pydog-gen4-stabilize-real-20260912",
+  "policy": {
+    "label": "terminal-hold.onnx",
+    "format": "onnx",
+    "browserUrl": "/pydog-gen4-stabilize/policy/terminal-hold.onnx",
+    "bundlePath": "module/policy/terminal-hold.onnx",
+    "inputName": "obs",
+    "outputName": "actions",
+    "observationDim": 605,
+    "actionDim": 127,
+    "inputShapes": [
+      {
+        "name": "obs",
+        "shape": [
+          1,
+          605
+        ]
+      }
+    ],
+    "outputShapes": [
+      {
+        "name": "actions",
+        "shape": [
+          1,
+          127
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "structural": {
+      "level": "pass",
+      "errors": [],
+      "warnings": []
+    },
+    "semantic": {
+      "level": "pass",
+      "errors": [],
+      "warnings": []
+    },
+    "compatibility": {
+      "level": "warn",
+      "errors": [],
+      "warnings": [
+        "IMU-only recovery candidate. Pose stable does not verify physical standing; no automatic gait handoff."
+      ]
+    }
+  },
+  "qualification": {
+    "physicalActionDim": 12,
+    "controllerFeedbackDim": 115,
+    "hardwareDeployment": "unverified",
+    "simulation": "limited",
+    "mode": "imu-pwm-recovery",
+    "note": "IMU-only recovery candidate. Pose stable does not verify physical standing; no automatic gait handoff.",
+    "robustnessPassed": false,
+    "simulationFailures": [
+      {
+        "name": "left",
+        "gain": 1.2,
+        "delayTicks": 1,
+        "failedGates": [
+          "support"
+        ]
+      },
+      {
+        "name": "right",
+        "gain": 1.2,
+        "delayTicks": 1,
+        "failedGates": [
+          "support"
+        ]
+      },
+      {
+        "name": "front",
+        "gain": 1.2,
+        "delayTicks": 1,
+        "failedGates": [
+          "support"
+        ]
+      },
+      {
+        "name": "back",
+        "gain": 1.2,
+        "delayTicks": 1,
+        "failedGates": [
+          "support"
+        ]
+      }
+    ],
+    "simulationScope": "Five nominal standing tests and fifteen attitude recovery tests passed at 1000 Hz. Strict support and standing checks passed 11/15 cases. Full robustness not qualified; see simulationFailures.",
+    "evidenceSha256": "2640044dd4c78a0fcf779a7e8837790c0d9ffb7de0fd88b87cece0c1a7e82b64",
+    "terminalReentrySimulation": "four directions passed; hypothetical PWM plant only",
+    "timeoutBehavior": "Operator-selected continuous recovery; 60-second signal is advisory. IMU, output and numerical faults still stop.",
+    "controllerVersion": 2
+  },
+  "integrity_entries_verified": 49,
+  "files": {
+    "project.sim": {
+      "bytes": 3891203,
+      "sha256": "21e717567de8c58d0d156c98fb6e7842c771f4858a8f78d5c1915e91f4c61e22"
+    },
+    "policy.onnx": {
+      "bytes": 2524554,
+      "sha256": "08f02285e317b3bfe5b152a2ed0982dd78d042a6ee4d60b6d0e3bfc12c5cf352"
+    },
+    "sim2sim.profile.json": {
+      "bytes": 187628,
+      "sha256": "71fa06f244bb07d7bfdf44dcfd0a915f292805dd800f07fd95eb7abef2178d33"
+    }
+  }
+}

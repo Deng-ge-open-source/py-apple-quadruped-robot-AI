@@ -1,0 +1,1870 @@
+{
+  "taskName": "gen4_trot_virtual_servo",
+  "robotType": "quadruped",
+  "terrain": "plane",
+  "runtimeTiming": {
+    "simDt": 0.001,
+    "decimation": 20
+  },
+  "commandSpeedRangeX": [
+    -0.1,
+    -0.1
+  ],
+  "commandSpeedRangeY": [
+    0,
+    0
+  ],
+  "commandYawRange": [
+    0,
+    0
+  ],
+  "baseHeightTarget": 0.107,
+  "pdStiffness": 5,
+  "pdDamping": 0.1,
+  "pdStiffnessByJoint": {},
+  "pdDampingByJoint": {},
+  "actionScaleByJoint": {
+    "FL_abad_joint": 0.4,
+    "FL_thigh_joint": 0.65,
+    "FL_calf_joint": 0.65,
+    "FR_abad_joint": 0.4,
+    "FR_thigh_joint": 0.65,
+    "FR_calf_joint": 0.65,
+    "RL_abad_joint": 0.4,
+    "RL_thigh_joint": 0.65,
+    "RL_calf_joint": 0.65,
+    "RR_abad_joint": 0.4,
+    "RR_thigh_joint": 0.65,
+    "RR_calf_joint": 0.65
+  },
+  "actionLimitByJoint": {
+    "FL_abad_joint": 0.4903325140476227,
+    "FL_thigh_joint": 0.4903325140476227,
+    "FL_calf_joint": 0.4903325140476227,
+    "FR_abad_joint": 0.4903325140476227,
+    "FR_thigh_joint": 0.4903325140476227,
+    "FR_calf_joint": 0.4903325140476227,
+    "RL_abad_joint": 0.4903325140476227,
+    "RL_thigh_joint": 0.4903325140476227,
+    "RL_calf_joint": 0.4903325140476227,
+    "RR_abad_joint": 0.4903325140476227,
+    "RR_thigh_joint": 0.4903325140476227,
+    "RR_calf_joint": 0.4903325140476227
+  },
+  "rewardScales": {
+    "phase_foot_swing_direction": 0,
+    "prolonged_standstill": -2,
+    "phase_foot_clearance": -4,
+    "phase_foot_contact": -2.5,
+    "ground_contact_point_slip": -0.5,
+    "forward_progress": 0,
+    "track_linear_velocity": 4,
+    "track_angular_velocity": 1,
+    "yaw_rate_error": -0.5,
+    "upright": 2,
+    "base_height": 2,
+    "pose": 0.15,
+    "body_ang_vel": -0.05,
+    "non_foot_ground_contact": -5,
+    "dof_pos_limits": -1,
+    "action_rate_l2": -0.03,
+    "termination": -50,
+    "air_time": 0,
+    "foot_clearance": 0,
+    "foot_swing_height": 0,
+    "foot_slip": 0,
+    "soft_landing": 0,
+    "stance_support": -4,
+    "phase_foot_horizontal_stride": -4,
+    "phase_foot_swing_advance": 0,
+    "cycle_mean_velocity_error": -1
+  },
+  "termination": {
+    "contactEnabled": false,
+    "contactLinkNames": [],
+    "contactForceThreshold": 0.2,
+    "baseHeightEnabled": true,
+    "minBaseHeight": 0.06,
+    "fallenEnabled": true,
+    "fallenAngleDegrees": 60,
+    "fallenTimeS": 0.15,
+    "nonfiniteStateEnabled": true,
+    "graceTimeS": 0.5
+  },
+  "localRunner": {
+    "backend": "cuda",
+    "gpuId": 0,
+    "numEnvs": 4096,
+    "iterations": 841,
+    "saveInterval": 20,
+    "seed": 7
+  },
+  "policyIO": {
+    "schema": "stackforce.policy-io.v2",
+    "mode": "custom",
+    "actorObservationTerms": [
+      "base_angular_velocity",
+      "projected_gravity",
+      "commands",
+      "phase_sin_cos",
+      "virtual_joint_position_error",
+      "virtual_joint_velocity",
+      "applied_actions"
+    ],
+    "criticObservationTerms": [
+      "base_linear_velocity",
+      "base_angular_velocity",
+      "projected_gravity",
+      "commands",
+      "phase_sin_cos",
+      "virtual_joint_position_error",
+      "virtual_joint_velocity",
+      "applied_actions",
+      "joint_position_error",
+      "joint_velocity"
+    ],
+    "actorObservationChannels": [
+      {
+        "observationIndex": 0,
+        "source": "base_angular_velocity",
+        "component": 0,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 1,
+        "source": "base_angular_velocity",
+        "component": 1,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 2,
+        "source": "base_angular_velocity",
+        "component": 2,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 3,
+        "source": "projected_gravity",
+        "component": 0,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 4,
+        "source": "projected_gravity",
+        "component": 1,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 5,
+        "source": "projected_gravity",
+        "component": 2,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 6,
+        "source": "commands",
+        "component": 0,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 7,
+        "source": "commands",
+        "component": 1,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 8,
+        "source": "commands",
+        "component": 2,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 9,
+        "source": "phase_sin_cos",
+        "component": 0,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 10,
+        "source": "phase_sin_cos",
+        "component": 1,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 11,
+        "source": "virtual_joint_position_error",
+        "component": 0,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 12,
+        "source": "virtual_joint_position_error",
+        "component": 1,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 13,
+        "source": "virtual_joint_position_error",
+        "component": 2,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 14,
+        "source": "virtual_joint_position_error",
+        "component": 3,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 15,
+        "source": "virtual_joint_position_error",
+        "component": 4,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 16,
+        "source": "virtual_joint_position_error",
+        "component": 5,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 17,
+        "source": "virtual_joint_position_error",
+        "component": 6,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 18,
+        "source": "virtual_joint_position_error",
+        "component": 7,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 19,
+        "source": "virtual_joint_position_error",
+        "component": 8,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 20,
+        "source": "virtual_joint_position_error",
+        "component": 9,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 21,
+        "source": "virtual_joint_position_error",
+        "component": 10,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 22,
+        "source": "virtual_joint_position_error",
+        "component": 11,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 23,
+        "source": "virtual_joint_velocity",
+        "component": 0,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 24,
+        "source": "virtual_joint_velocity",
+        "component": 1,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 25,
+        "source": "virtual_joint_velocity",
+        "component": 2,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 26,
+        "source": "virtual_joint_velocity",
+        "component": 3,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 27,
+        "source": "virtual_joint_velocity",
+        "component": 4,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 28,
+        "source": "virtual_joint_velocity",
+        "component": 5,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 29,
+        "source": "virtual_joint_velocity",
+        "component": 6,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 30,
+        "source": "virtual_joint_velocity",
+        "component": 7,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 31,
+        "source": "virtual_joint_velocity",
+        "component": 8,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 32,
+        "source": "virtual_joint_velocity",
+        "component": 9,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 33,
+        "source": "virtual_joint_velocity",
+        "component": 10,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 34,
+        "source": "virtual_joint_velocity",
+        "component": 11,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 35,
+        "source": "applied_actions",
+        "component": 0,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 36,
+        "source": "applied_actions",
+        "component": 1,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 37,
+        "source": "applied_actions",
+        "component": 2,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 38,
+        "source": "applied_actions",
+        "component": 3,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 39,
+        "source": "applied_actions",
+        "component": 4,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 40,
+        "source": "applied_actions",
+        "component": 5,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 41,
+        "source": "applied_actions",
+        "component": 6,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 42,
+        "source": "applied_actions",
+        "component": 7,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 43,
+        "source": "applied_actions",
+        "component": 8,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 44,
+        "source": "applied_actions",
+        "component": 9,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 45,
+        "source": "applied_actions",
+        "component": 10,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 46,
+        "source": "applied_actions",
+        "component": 11,
+        "scale": 1,
+        "bias": 0
+      }
+    ],
+    "criticObservationChannels": [
+      {
+        "observationIndex": 0,
+        "source": "base_linear_velocity",
+        "component": 0,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 1,
+        "source": "base_linear_velocity",
+        "component": 1,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 2,
+        "source": "base_linear_velocity",
+        "component": 2,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 3,
+        "source": "base_angular_velocity",
+        "component": 0,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 4,
+        "source": "base_angular_velocity",
+        "component": 1,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 5,
+        "source": "base_angular_velocity",
+        "component": 2,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 6,
+        "source": "projected_gravity",
+        "component": 0,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 7,
+        "source": "projected_gravity",
+        "component": 1,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 8,
+        "source": "projected_gravity",
+        "component": 2,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 9,
+        "source": "commands",
+        "component": 0,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 10,
+        "source": "commands",
+        "component": 1,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 11,
+        "source": "commands",
+        "component": 2,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 12,
+        "source": "phase_sin_cos",
+        "component": 0,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 13,
+        "source": "phase_sin_cos",
+        "component": 1,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 14,
+        "source": "virtual_joint_position_error",
+        "component": 0,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 15,
+        "source": "virtual_joint_position_error",
+        "component": 1,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 16,
+        "source": "virtual_joint_position_error",
+        "component": 2,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 17,
+        "source": "virtual_joint_position_error",
+        "component": 3,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 18,
+        "source": "virtual_joint_position_error",
+        "component": 4,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 19,
+        "source": "virtual_joint_position_error",
+        "component": 5,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 20,
+        "source": "virtual_joint_position_error",
+        "component": 6,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 21,
+        "source": "virtual_joint_position_error",
+        "component": 7,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 22,
+        "source": "virtual_joint_position_error",
+        "component": 8,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 23,
+        "source": "virtual_joint_position_error",
+        "component": 9,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 24,
+        "source": "virtual_joint_position_error",
+        "component": 10,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 25,
+        "source": "virtual_joint_position_error",
+        "component": 11,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 26,
+        "source": "virtual_joint_velocity",
+        "component": 0,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 27,
+        "source": "virtual_joint_velocity",
+        "component": 1,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 28,
+        "source": "virtual_joint_velocity",
+        "component": 2,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 29,
+        "source": "virtual_joint_velocity",
+        "component": 3,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 30,
+        "source": "virtual_joint_velocity",
+        "component": 4,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 31,
+        "source": "virtual_joint_velocity",
+        "component": 5,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 32,
+        "source": "virtual_joint_velocity",
+        "component": 6,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 33,
+        "source": "virtual_joint_velocity",
+        "component": 7,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 34,
+        "source": "virtual_joint_velocity",
+        "component": 8,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 35,
+        "source": "virtual_joint_velocity",
+        "component": 9,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 36,
+        "source": "virtual_joint_velocity",
+        "component": 10,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 37,
+        "source": "virtual_joint_velocity",
+        "component": 11,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 38,
+        "source": "applied_actions",
+        "component": 0,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 39,
+        "source": "applied_actions",
+        "component": 1,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 40,
+        "source": "applied_actions",
+        "component": 2,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 41,
+        "source": "applied_actions",
+        "component": 3,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 42,
+        "source": "applied_actions",
+        "component": 4,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 43,
+        "source": "applied_actions",
+        "component": 5,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 44,
+        "source": "applied_actions",
+        "component": 6,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 45,
+        "source": "applied_actions",
+        "component": 7,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 46,
+        "source": "applied_actions",
+        "component": 8,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 47,
+        "source": "applied_actions",
+        "component": 9,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 48,
+        "source": "applied_actions",
+        "component": 10,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 49,
+        "source": "applied_actions",
+        "component": 11,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 50,
+        "source": "joint_position_error",
+        "component": 0,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 51,
+        "source": "joint_position_error",
+        "component": 1,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 52,
+        "source": "joint_position_error",
+        "component": 2,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 53,
+        "source": "joint_position_error",
+        "component": 3,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 54,
+        "source": "joint_position_error",
+        "component": 4,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 55,
+        "source": "joint_position_error",
+        "component": 5,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 56,
+        "source": "joint_position_error",
+        "component": 6,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 57,
+        "source": "joint_position_error",
+        "component": 7,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 58,
+        "source": "joint_position_error",
+        "component": 8,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 59,
+        "source": "joint_position_error",
+        "component": 9,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 60,
+        "source": "joint_position_error",
+        "component": 10,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 61,
+        "source": "joint_position_error",
+        "component": 11,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 62,
+        "source": "joint_velocity",
+        "component": 0,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 63,
+        "source": "joint_velocity",
+        "component": 1,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 64,
+        "source": "joint_velocity",
+        "component": 2,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 65,
+        "source": "joint_velocity",
+        "component": 3,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 66,
+        "source": "joint_velocity",
+        "component": 4,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 67,
+        "source": "joint_velocity",
+        "component": 5,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 68,
+        "source": "joint_velocity",
+        "component": 6,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 69,
+        "source": "joint_velocity",
+        "component": 7,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 70,
+        "source": "joint_velocity",
+        "component": 8,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 71,
+        "source": "joint_velocity",
+        "component": 9,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 72,
+        "source": "joint_velocity",
+        "component": 10,
+        "scale": 1,
+        "bias": 0
+      },
+      {
+        "observationIndex": 73,
+        "source": "joint_velocity",
+        "component": 11,
+        "scale": 1,
+        "bias": 0
+      }
+    ],
+    "actorHistoryFrames": 6,
+    "criticHistoryFrames": 1,
+    "actions": [
+      {
+        "actionIndex": 0,
+        "joint": "FL_abad_joint",
+        "mode": "position",
+        "direction": 1,
+        "scale": 0.4,
+        "limit": 0.4903325140476227
+      },
+      {
+        "actionIndex": 1,
+        "joint": "FL_thigh_joint",
+        "mode": "position",
+        "direction": 1,
+        "scale": 0.65,
+        "limit": 0.4903325140476227
+      },
+      {
+        "actionIndex": 2,
+        "joint": "FL_calf_joint",
+        "mode": "position",
+        "direction": 1,
+        "scale": 0.65,
+        "limit": 0.4903325140476227
+      },
+      {
+        "actionIndex": 3,
+        "joint": "FR_abad_joint",
+        "mode": "position",
+        "direction": 1,
+        "scale": 0.4,
+        "limit": 0.4903325140476227
+      },
+      {
+        "actionIndex": 4,
+        "joint": "FR_thigh_joint",
+        "mode": "position",
+        "direction": 1,
+        "scale": 0.65,
+        "limit": 0.4903325140476227
+      },
+      {
+        "actionIndex": 5,
+        "joint": "FR_calf_joint",
+        "mode": "position",
+        "direction": 1,
+        "scale": 0.65,
+        "limit": 0.4903325140476227
+      },
+      {
+        "actionIndex": 6,
+        "joint": "RL_abad_joint",
+        "mode": "position",
+        "direction": 1,
+        "scale": 0.4,
+        "limit": 0.4903325140476227
+      },
+      {
+        "actionIndex": 7,
+        "joint": "RL_thigh_joint",
+        "mode": "position",
+        "direction": 1,
+        "scale": 0.65,
+        "limit": 0.4903325140476227
+      },
+      {
+        "actionIndex": 8,
+        "joint": "RL_calf_joint",
+        "mode": "position",
+        "direction": 1,
+        "scale": 0.65,
+        "limit": 0.4903325140476227
+      },
+      {
+        "actionIndex": 9,
+        "joint": "RR_abad_joint",
+        "mode": "position",
+        "direction": 1,
+        "scale": 0.4,
+        "limit": 0.4903325140476227
+      },
+      {
+        "actionIndex": 10,
+        "joint": "RR_thigh_joint",
+        "mode": "position",
+        "direction": 1,
+        "scale": 0.65,
+        "limit": 0.4903325140476227
+      },
+      {
+        "actionIndex": 11,
+        "joint": "RR_calf_joint",
+        "mode": "position",
+        "direction": 1,
+        "scale": 0.65,
+        "limit": 0.4903325140476227
+      }
+    ],
+    "inputName": "obs",
+    "outputName": "action",
+    "runtimeAdapters": [
+      {
+        "id": "command",
+        "type": "command",
+        "enabled": true,
+        "params": {
+          "dim": 3,
+          "components": "vx, vy, yaw_rate",
+          "defaultValue": "0, 0, 0",
+          "initialValue": "0, 0, 0",
+          "min": "-1, -1, -2",
+          "max": "1, 1, 2",
+          "exposeToControl": true,
+          "deadzone": 0.08,
+          "releaseBehavior": "zero",
+          "forwardSign": 1,
+          "strafeSign": 1,
+          "turnSign": 1,
+          "walkPreset": "0.4, 0, 0",
+          "stopPreset": "0, 0, 0",
+          "normalize": false
+        }
+      },
+      {
+        "id": "height_scan",
+        "type": "height_scan",
+        "enabled": false,
+        "params": {
+          "sizeX": 1.6,
+          "sizeY": 1,
+          "resolution": 0.1,
+          "heightOffset": 0.5,
+          "scale": 5,
+          "clipMin": -1,
+          "clipMax": 1
+        }
+      },
+      {
+        "id": "phase_clock",
+        "type": "phase_clock",
+        "enabled": true,
+        "params": {
+          "dim": 2,
+          "format": "sin_cos",
+          "periodSeconds": 0.44,
+          "clockMode": "fixed_period_steps",
+          "update": "policy_step",
+          "initialPhase": 0,
+          "reset": "zero",
+          "exactPhaseSteps": true,
+          "idlePhaseCycles": 0.75,
+          "idleCommandThreshold": 1e-06
+        }
+      },
+      {
+        "id": "action_history",
+        "type": "action_history",
+        "enabled": false,
+        "params": {
+          "frames": 1,
+          "order": "old_to_new",
+          "initialize": "zero",
+          "includeCurrent": false,
+          "useClipped": true,
+          "useScaled": false
+        }
+      },
+      {
+        "id": "virtual_servo_state",
+        "type": "virtual_servo_state",
+        "enabled": true,
+        "params": {
+          "kp": 35,
+          "kd": 1.2,
+          "inertia": 1,
+          "maxTargetVelocity": 0,
+          "targetSmoothingAlpha": 1,
+          "targetResolutionRad": 0
+        }
+      },
+      {
+        "id": "constant_zero",
+        "type": "constant_zero",
+        "enabled": false,
+        "params": {
+          "value": 0
+        }
+      }
+    ]
+  },
+  "mjlab": {
+    "schema": "stackforce.mjlab-settings.v1",
+    "controlAdapter": "standard",
+    "adapterParameters": {
+      "stanceSupportEnabled": 1,
+      "stanceSupportWeight": 4,
+      "supportHoldHeight": 0.035,
+      "supportHoldRatio": 0,
+      "supportMargin": 0.005,
+      "supportPolygonWeight": 0.5,
+      "supportHeightWeight": 2,
+      "supportLinearSpeedStd": 0.003,
+      "supportAngularSpeedStd": 0.02
+    },
+    "phaseReference": {
+      "amplitudes": [],
+      "offsets": [],
+      "waveformCodes": [],
+      "residualScale": 1,
+      "residualSmoothingAlpha": 1,
+      "rampSeconds": 0.5,
+      "observePhase": true
+    },
+    "robot": null,
+    "network": {
+      "actorHiddenDims": [
+        128,
+        64
+      ],
+      "criticHiddenDims": [
+        256,
+        128
+      ],
+      "activation": "elu",
+      "actorNormalization": true,
+      "criticNormalization": true
+    },
+    "ppo": {
+      "noiseStdMin": 0.02,
+      "noiseStdMax": 0.6,
+      "actionMeanBound": 1.8,
+      "initNoiseStd": 0.35,
+      "resumeNoiseStd": 0,
+      "entropyCoef": 0.005,
+      "learningRate": 0.00015,
+      "numStepsPerEnv": 48,
+      "valueLossCoef": 1,
+      "clippedValueLoss": true,
+      "clipParam": 0.2,
+      "numLearningEpochs": 5,
+      "numMiniBatches": 4,
+      "schedule": "fixed",
+      "gamma": 0.99,
+      "lam": 0.95,
+      "desiredKl": 0.01,
+      "maxGradNorm": 1
+    },
+    "posture": {
+      "standing": {
+        ".*": 0.5
+      },
+      "walking": {
+        ".*": 0.8
+      },
+      "running": {
+        ".*": 1
+      }
+    },
+    "velocityCurriculum": {
+      "enabled": false,
+      "startStage": 0,
+      "requiredEpisodes": 3000,
+      "successRate": 0.95,
+      "minimumEpisodeSeconds": 15,
+      "stages": [
+        {
+          "name": "站立平衡",
+          "linearX": [
+            0,
+            0
+          ],
+          "trackingStd": 0.3,
+          "maxTrackingError": 0.08,
+          "gaitRewardScale": 0,
+          "smoothnessRewardScale": 0.25
+        },
+        {
+          "name": "低速双向行走",
+          "linearX": [
+            -0.3,
+            0.3
+          ],
+          "trackingStd": 0.3,
+          "maxTrackingError": 0.12,
+          "gaitRewardScale": 0.5,
+          "smoothnessRewardScale": 0.5
+        },
+        {
+          "name": "中速双向行走",
+          "linearX": [
+            -0.6,
+            0.6
+          ],
+          "trackingStd": 0.25,
+          "maxTrackingError": 0.15,
+          "gaitRewardScale": 0.75,
+          "smoothnessRewardScale": 0.75
+        },
+        {
+          "name": "完整速度范围",
+          "linearX": [
+            -1,
+            1
+          ],
+          "trackingStd": 0.2,
+          "maxTrackingError": 0.15,
+          "gaitRewardScale": 1,
+          "smoothnessRewardScale": 1
+        }
+      ]
+    },
+    "commands": {
+      "axisAlignedEnvRatio": 0.9,
+      "standingEnvRatio": 0.5,
+      "forwardEnvRatio": 0,
+      "headingEnvRatio": 0,
+      "resamplingMinSeconds": 3,
+      "resamplingMaxSeconds": 8,
+      "headingEnabled": false,
+      "headingRange": [
+        -3.14,
+        3.14
+      ],
+      "headingGain": 0.5,
+      "axisBoundaryEnvRatio": 0.8,
+      "axisInteriorEnvRatio": 0.5,
+      "axisInteriorFraction": 0.6666666666666666,
+      "axisWeights": [
+        2,
+        2,
+        2
+      ]
+    },
+    "environment": {
+      "legacyContactMarginGap": false,
+      "actuatorSource": "generated",
+      "nativeActuatorGainsFromGui": false,
+      "bamGroups": [],
+      "episodeSeconds": 20,
+      "contactFrictionOverride": false,
+      "phasePeriodSeconds": 0.4,
+      "contactFriction": [
+        0.8,
+        0.02,
+        0.002
+      ],
+      "maxContacts": 128,
+      "maxConstraints": 512,
+      "footCollisionRadiusScale": 1,
+      "footCollisionOffsetZ": 0,
+      "footCollisionGeomNames": [
+        "FL_wheel_collision_0",
+        "FR_wheel_collision_0",
+        "RR_wheel_collision_0",
+        "RL_wheel_collision_0"
+      ],
+      "footContactMode": "geom",
+      "nonFootContactTermination": false,
+      "baseHeightStd": 0.015,
+      "recoveryScale": 0,
+      "headingStd": 0,
+      "headingYawOnly": false,
+      "actionClip": 1.8,
+      "initialRootHeight": 0.107,
+      "footSitePlacement": "manual",
+      "footSiteOffsets": {
+        "FL_wheel": [
+          0.006346918218946559,
+          -0.017174687811530958,
+          0.0144321752477845
+        ],
+        "FR_wheel": [
+          0.006346921842584137,
+          0.017174714815848584,
+          0.014432176014594796
+        ],
+        "RR_wheel": [
+          0.005404997725982524,
+          -0.017493361588139873,
+          -0.004071943474504875
+        ],
+        "RL_wheel": [
+          0.006347496392265289,
+          -0.01717464218758847,
+          0.01623217321541345
+        ]
+      },
+      "collisionExclusions": [],
+      "randomization": {
+        "resetJointPositionScale": [
+          1,
+          1
+        ],
+        "resetRootVelocityRange": [
+          0,
+          0
+        ],
+        "resetRootPositionXYRange": [
+          0,
+          0
+        ],
+        "friction": {
+          "enabled": false,
+          "range": [
+            1,
+            1
+          ]
+        },
+        "push": {
+          "enabled": false,
+          "intervalS": 15,
+          "maxVelocityXY": 0
+        }
+      },
+      "observationNoiseEnabled": false,
+      "observationNoise": {
+        "level": 1,
+        "linearVelocity": 0.1,
+        "angularVelocity": 0.2,
+        "gravity": 0.05,
+        "jointPosition": 0.01,
+        "jointVelocity": 1.5,
+        "heightScan": 0.1
+      },
+      "physicsIntegrator": "implicitfast",
+      "dcServo": {
+        "nominalVoltage": 6,
+        "stallTorque": 0.34323275,
+        "noLoadSpeed": 5.235987755982989
+      },
+      "imuRandomization": {
+        "schema": "stackforce.imu-randomization.v1",
+        "enabled": false,
+        "mode": "synthetic",
+        "seed": 20261101,
+        "critic": "clean",
+        "sensorHz": 49.7,
+        "gyroNoiseStdRadS": [
+          0.0029,
+          0.0023,
+          0.0017
+        ],
+        "gyroNoiseScale": [
+          0.5,
+          2
+        ],
+        "gyroEpisodeBiasRadS": 0.001,
+        "gyroOuStdRadS": [
+          0.0001,
+          0.0005
+        ],
+        "gyroOuTauS": [
+          10,
+          60
+        ],
+        "mountErrorDeg": [
+          2,
+          2,
+          2
+        ],
+        "mountFixedDeg": [
+          0,
+          0,
+          0
+        ],
+        "attitudeOuStdDeg": [
+          0.1,
+          0.5
+        ],
+        "attitudeOuTauS": [
+          0.1,
+          1
+        ],
+        "fusionDelayMs": [
+          0,
+          0
+        ],
+        "transportDelayMs": [
+          0,
+          40
+        ],
+        "dropProbability": [
+          0,
+          0.01
+        ],
+        "maxConsecutiveDrops": 2,
+        "cleanEpisodeFraction": 0.2,
+        "curriculum": {
+          "startStep": 0,
+          "rampSteps": 8000,
+          "startStrength": 0,
+          "endStrength": 1
+        },
+        "freeze": {
+          "startS": -1,
+          "durationS": 0
+        }
+      }
+    },
+    "rewardParameters": {
+      "phase_foot_swing_direction": {
+        "phase_offsets": [
+          0,
+          0.5
+        ],
+        "swing_fraction": 0.5,
+        "swing_start": 0.15,
+        "swing_end": 0.75,
+        "command_threshold": 0.1,
+        "force_threshold": 2,
+        "target_speed_ratio": 1,
+        "max_target_speed": 0.6,
+        "velocity_std": 0.5,
+        "aggregation": "mean"
+      },
+      "prolonged_standstill": {
+        "command_threshold": 0.025,
+        "speed_threshold": 0.015,
+        "command_speed_ratio": 0.2,
+        "window_seconds": 0.8,
+        "grace_seconds": 1,
+        "ramp_seconds": 1
+      },
+      "non_foot_ground_contact": {
+        "force_threshold": 0.2
+      },
+      "termination": {
+        "per_event": true
+      },
+      "forward_progress": {
+        "reference_frame": "robot"
+      },
+      "track_linear_velocity": {
+        "planar_only": true,
+        "std": 0.05
+      },
+      "track_angular_velocity": {
+        "yaw_only": true,
+        "std": 0.1
+      },
+      "upright": {
+        "std": 0.4472135954999579
+      },
+      "pose": {
+        "walking_threshold": 0.05,
+        "running_threshold": 1.5
+      },
+      "air_time": {
+        "threshold_min": 0.05,
+        "threshold_max": 0.5,
+        "command_threshold": 0.5
+      },
+      "foot_clearance": {
+        "target_height": 0.1,
+        "command_threshold": 0.05
+      },
+      "foot_swing_height": {
+        "target_height": 0.1,
+        "command_threshold": 0.05
+      },
+      "phase_foot_clearance": {
+        "height_source": "sphere_bottom",
+        "worst_foot_weight": 0.25,
+        "peak_tracking_weight": 3,
+        "peak_symmetry_weight": 0,
+        "peak_tolerance": 0.001,
+        "target_height": 0.035,
+        "phase_offsets": [
+          0,
+          0.5,
+          0,
+          0.5
+        ],
+        "swing_fraction": 0.45,
+        "command_threshold": 0.02,
+        "aggregation": "mean",
+        "profile_tracking_weight": 0.25,
+        "peak_tracking_aggregation": "worst_valid"
+      },
+      "phase_foot_contact": {
+        "phase_offsets": [
+          0,
+          0.5,
+          0,
+          0.5
+        ],
+        "swing_fraction": 0.45,
+        "load_transfer_weight": 0.5,
+        "swing_unload_weight": 0,
+        "force_threshold": 0.2,
+        "command_threshold": 0.02,
+        "aggregation": "mean"
+      },
+      "ground_contact_point_slip": {
+        "force_threshold": 0.2,
+        "command_threshold": 0.02
+      },
+      "foot_slip": {
+        "command_threshold": 0.05
+      },
+      "soft_landing": {
+        "command_threshold": 0.05
+      },
+      "stance_support": {
+        "height_source": "sphere_bottom",
+        "height_scale": 0.035,
+        "force_threshold": 0.2,
+        "linear_deadband": 0.005,
+        "angular_deadband": 0.02,
+        "height_weight": 1,
+        "contact_weight": 0.5,
+        "motion_weight": 1,
+        "joint_motion_weight": 0.3,
+        "worst_foot_weight": 0.25,
+        "linear_speed_std": 0.02,
+        "angular_speed_std": 0.1,
+        "motion_cost_mode": "bounded"
+      },
+      "cycle_mean_velocity_error": {
+        "window_seconds": 0.44,
+        "grace_seconds": 1,
+        "linear_std": 0.05,
+        "angular_std": 0.2,
+        "command_threshold": 1e-06,
+        "command_change_threshold": 0.001,
+        "off_axis_weight": 0.25,
+        "cost_mode": "axis_log_huber",
+        "track_zero_commands": true,
+        "angular_reference": "heading_delta"
+      },
+      "phase_foot_horizontal_stride": {
+        "phase_offsets": [
+          0,
+          0.5,
+          0,
+          0.5
+        ],
+        "swing_fraction": 0.45,
+        "min_excursion": 0.03,
+        "target_ratio": 1,
+        "relative_tolerance": 0.1,
+        "symmetry_weight": 0.5,
+        "force_threshold": 0.2,
+        "command_threshold": 0.03,
+        "lateral_threshold": 0.003,
+        "yaw_threshold": 0.01,
+        "min_excursion_reference_speed": 0.1,
+        "minimum_air_seconds": 0.04,
+        "minimum_air_height": 0.003,
+        "maximum_air_fraction": 0.9,
+        "actual_air_weight": 0,
+        "symmetry_floor_at_target": false,
+        "symmetry_floor_reference": "minimum",
+        "planar_straight": true,
+        "sample_each_physics_step": false,
+        "actual_air_dense_weight": 0,
+        "actual_air_dense_aggregation": "worst_valid",
+        "actual_air_shortfall_cost": "linear",
+        "actual_air_shortfall_aggregation": "worst_valid",
+        "actual_air_completed_floor_weight": 2,
+        "control_rate_feedback_weight": 0,
+        "actual_air_dense_linear_weight": 0,
+        "actual_air_completed_backtracking_weight": 0,
+        "command_mode": "planar_twist",
+        "angular_command_threshold": 0.01,
+        "turn_min_excursion": 0.015,
+        "turn_reference_yaw_rate": 0.4,
+        "cycle_shortfall_aggregation": "worst_valid"
+      },
+      "phase_foot_swing_advance": {
+        "phase_offsets": [
+          0,
+          0.5,
+          0,
+          0.5
+        ],
+        "swing_fraction": 0.45,
+        "command_threshold": 0.2,
+        "force_threshold": 0.2,
+        "target_step_ratio": 1.5,
+        "max_target_advance": 0.06,
+        "advance_std": 0.01,
+        "dense_weight": 0.25,
+        "aggregation": "worst_foot",
+        "minimum_reference_feet": 2,
+        "command_mode": "planar_twist",
+        "point_source": "collision_geom",
+        "exclude_swing_references": true,
+        "angular_command_threshold": 0.01
+      }
+    },
+    "footClearanceTargets": {
+      "schema": "stackforce.foot-clearance-targets.v1",
+      "enabled": true,
+      "feet": {
+        "FL_wheel": {
+          "height": 0.035,
+          "tolerance": 0.001
+        },
+        "FR_wheel": {
+          "height": 0.035,
+          "tolerance": 0.001
+        },
+        "RR_wheel": {
+          "height": 0.035,
+          "tolerance": 0.001
+        },
+        "RL_wheel": {
+          "height": 0.035,
+          "tolerance": 0.001
+        }
+      },
+      "directions": {
+        "x_neg": {
+          "FL_wheel": {
+            "height": 0.033950305783917716,
+            "tolerance": 0.001
+          },
+          "FR_wheel": {
+            "height": 0.034453996046148426,
+            "tolerance": 0.001
+          },
+          "RR_wheel": {
+            "height": 0.03488942699389313,
+            "tolerance": 0.001
+          },
+          "RL_wheel": {
+            "height": 0.036284611791825044,
+            "tolerance": 0.001
+          }
+        },
+        "x_pos": {
+          "FL_wheel": {
+            "height": 0.03525251672153113,
+            "tolerance": 0.001
+          },
+          "FR_wheel": {
+            "height": 0.034140771747075575,
+            "tolerance": 0.001
+          },
+          "RR_wheel": {
+            "height": 0.034675769859335626,
+            "tolerance": 0.001
+          },
+          "RL_wheel": {
+            "height": 0.034636219680915785,
+            "tolerance": 0.001
+          }
+        },
+        "y_neg": {
+          "FL_wheel": {
+            "height": 0.035771157537597055,
+            "tolerance": 0.001
+          },
+          "FR_wheel": {
+            "height": 0.03411774679856623,
+            "tolerance": 0.001
+          },
+          "RR_wheel": {
+            "height": 0.035788949285443385,
+            "tolerance": 0.001
+          },
+          "RL_wheel": {
+            "height": 0.035879637526682905,
+            "tolerance": 0.001
+          }
+        },
+        "y_pos": {
+          "FL_wheel": {
+            "height": 0.03380170878137292,
+            "tolerance": 0.001
+          },
+          "FR_wheel": {
+            "height": 0.03630692452006228,
+            "tolerance": 0.001
+          },
+          "RR_wheel": {
+            "height": 0.03353469612703349,
+            "tolerance": 0.001
+          },
+          "RL_wheel": {
+            "height": 0.03614254875888507,
+            "tolerance": 0.001
+          }
+        },
+        "yaw_pos": {
+          "FL_wheel": {
+            "height": 0.034555664637804684,
+            "tolerance": 0.001
+          },
+          "FR_wheel": {
+            "height": 0.037412185019828625,
+            "tolerance": 0.001
+          },
+          "RR_wheel": {
+            "height": 0.034077343925909116,
+            "tolerance": 0.001
+          },
+          "RL_wheel": {
+            "height": 0.03514910226068685,
+            "tolerance": 0.001
+          }
+        },
+        "yaw_neg": {
+          "FL_wheel": {
+            "height": 0.03602226513616815,
+            "tolerance": 0.001
+          },
+          "FR_wheel": {
+            "height": 0.03347643789906446,
+            "tolerance": 0.001
+          },
+          "RR_wheel": {
+            "height": 0.03577737988172143,
+            "tolerance": 0.001
+          },
+          "RL_wheel": {
+            "height": 0.03938944730435454,
+            "tolerance": 0.001
+          }
+        }
+      }
+    },
+    "footStrideTargets": {
+      "schema": "stackforce.foot-stride-targets.v1",
+      "enabled": true,
+      "feet": {
+        "FL_wheel": 0.03,
+        "FR_wheel": 0.03,
+        "RR_wheel": 0.03,
+        "RL_wheel": 0.03
+      },
+      "spreadLimit": 0.1,
+      "directions": {
+        "x_pos": {
+          "feet": {
+            "FL_wheel": 0.027542164091083024,
+            "FR_wheel": 0.02934903637059667,
+            "RR_wheel": 0.028835807284717543,
+            "RL_wheel": 0.026870680941469324
+          },
+          "spreadLimit": 0.13804285267338406
+        },
+        "x_neg": {
+          "feet": {
+            "FL_wheel": 0.03328141855015766,
+            "FR_wheel": 0.028667120614784408,
+            "RR_wheel": 0.03071417296424865,
+            "RL_wheel": 0.029421533229213984
+          },
+          "spreadLimit": 0.2011840589038163
+        },
+        "y_pos": {
+          "feet": {
+            "FL_wheel": 0.020522208654890843,
+            "FR_wheel": 0.020498093945199965,
+            "RR_wheel": 0.02070510022707817,
+            "RL_wheel": 0.020970031793792837
+          },
+          "spreadLimit": 0.07282775830399926
+        },
+        "y_neg": {
+          "feet": {
+            "FL_wheel": 0.020013100242368503,
+            "FR_wheel": 0.02112395167443346,
+            "RR_wheel": 0.020187689644727603,
+            "RL_wheel": 0.020092905927730435
+          },
+          "spreadLimit": 0.10457546201941018
+        },
+        "yaw_pos": {
+          "feet": {
+            "FL_wheel": 0.01484312833328178,
+            "FR_wheel": 0.02658537274158726,
+            "RR_wheel": 0.01862098235049828,
+            "RL_wheel": 0.012678291523841749
+          },
+          "spreadLimit": 0.8148841850287766
+        },
+        "yaw_neg": {
+          "feet": {
+            "FL_wheel": 0.02131731094756634,
+            "FR_wheel": 0.015205201982466677,
+            "RR_wheel": 0.02538190479221333,
+            "RL_wheel": 0.021036588614854673
+          },
+          "spreadLimit": 0.540792347919436
+        }
+      }
+    }
+  }
+}

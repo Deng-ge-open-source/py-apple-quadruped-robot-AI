@@ -1,0 +1,13 @@
+﻿file,source_id,source_label,original_CAD_center_X_mm,original_CAD_center_Y_mm,original_CAD_center_Z_mm
+stl/body_and_upper_legs/body_mm.stl,Part__Feature,body v1,-1.143607532429862,-2.3156217403277717,50.86111093888377
+stl/body_and_upper_legs/shoulder_01_mm.stl,Part__Feature007,肩部 v1,42.938611652324255,81.68543893144034,55.107535918041854
+stl/body_and_upper_legs/shoulder_cover_01_mm.stl,Part__Feature008,肩部盖 v1,-6.178128621821338e-17,65.1094929699592,56.48914976190332
+stl/body_and_upper_legs/shoulder_02_mm.stl,Part__Feature011,肩部 v1(镜像),-42.9386114554249,81.68543924725051,55.10753593194946
+stl/body_and_upper_legs/shoulder_03_mm.stl,Part__Feature014,肩部 v1(镜像) (1),42.93861145542489,-83.68543924725041,55.107535931949556
+stl/body_and_upper_legs/shoulder_cover_02_mm.stl,Part__Feature015,肩部盖 v1(镜像),2.7843007103644635e-14,-67.1094929699592,56.48914976190333
+stl/body_and_upper_legs/shoulder_04_mm.stl,Part__Feature018,肩部 v1(镜像)(镜像),-42.93861165232424,-83.68543893144025,55.107535918041755
+stl/body_and_upper_legs/thigh_01_mm.stl,Part__Feature027,大腿 v1,-65.72763757748068,-66.6366458252634,42.08677278729647
+stl/body_and_upper_legs/thigh_02_mm.stl,Part__Feature032,大腿 v001,-65.72763757748059,106.27262031263021,42.08677278729624
+stl/body_and_upper_legs/thigh_03_mm.stl,Part__Feature033,大腿 v1(镜像),65.47764352550415,-66.63658590711827,42.08677440105781
+stl/body_and_upper_legs/thigh_04_mm.stl,Part__Feature034,大腿 v1(镜像)001,65.72764352550416,106.2726802307755,42.08677440105798
+stl/body_and_upper_legs/display_top_mm.stl,Part__Feature051,显示屏顶 v1,0.27537260488721604,-44.87080777390966,86.10444841327066

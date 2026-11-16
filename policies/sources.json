@@ -1,0 +1,438 @@
+{
+  "retrieved_on": "2026-11-15",
+  "source_site": "https://sim2real.stackforce.cc/",
+  "examples": [
+    {
+      "name": "向前小跑",
+      "directory": "forward-trot",
+      "example_id": "pydog-gen4-stand-forward",
+      "downloaded_on": "2026-11-15",
+      "source_url": "https://sim2real.stackforce.cc/sim2real-examples/pydog-gen4-stand-forward.sim",
+      "original_bundle_id": "pydog-gen4-stand-forward-real-20261108",
+      "policy": {
+        "label": "policy.onnx",
+        "format": "onnx",
+        "browserUrl": "/pydog-gen4-stand-forward/policy/policy.onnx",
+        "bundlePath": "module/policy/policy.onnx",
+        "inputName": "obs",
+        "outputName": "actions",
+        "observationDim": 585,
+        "actionDim": 120,
+        "inputShapes": [
+          {
+            "name": "obs",
+            "shape": [
+              1,
+              585
+            ]
+          }
+        ],
+        "outputShapes": [
+          {
+            "name": "actions",
+            "shape": [
+              1,
+              120
+            ]
+          }
+        ]
+      },
+      "validation": {
+        "structural": {
+          "level": "pass",
+          "errors": [],
+          "warnings": []
+        },
+        "semantic": {
+          "level": "pass",
+          "errors": [],
+          "warnings": []
+        },
+        "compatibility": {
+          "level": "warn",
+          "errors": [],
+          "warnings": [
+            "Stand/forward switching preview candidate (seed 7, iteration 560). Long forward runs drift in heading; hardware unverified."
+          ]
+        }
+      },
+      "qualification": {
+        "physicalActionDim": 12,
+        "controllerFeedbackDim": 108,
+        "hardwareDeployment": "unverified",
+        "simulation": "preview",
+        "mode": "virtual-servo-contract",
+        "note": "Stand/forward switching preview candidate (seed 7, iteration 560). Long forward runs drift in heading; hardware unverified."
+      },
+      "integrity_entries_verified": 43,
+      "files": {
+        "project.sim": {
+          "bytes": 1904261,
+          "sha256": "3a7da260013cf10e8f371dee1327fc8246ef34876dbff78187d94def080b00de"
+        },
+        "policy.onnx": {
+          "bytes": 200388,
+          "sha256": "f0f552c40a3d68ebd23217c9cdfc8a910ce9f4321d5da630ba9b018cb7279406"
+        },
+        "sim2sim.profile.json": {
+          "bytes": 184982,
+          "sha256": "a8fbb45bc5f3f5ced77d49d84b236814bdf492af07a559629a265264f001b881"
+        }
+      }
+    },
+    {
+      "name": "全向小跑",
+      "directory": "omnidirectional-trot",
+      "example_id": "pydog-gen4-trot-v132-100",
+      "downloaded_on": "2026-11-15",
+      "source_url": "https://sim2real.stackforce.cc/sim2real-examples/pydog-gen4-trot-v132-100.sim",
+      "original_bundle_id": "pydog-gen4-trot-v132-100-real-20261031",
+      "policy": {
+        "label": "policy.onnx",
+        "format": "onnx",
+        "browserUrl": "/pydog-gen4-trot-v132-100/policy/policy.onnx",
+        "bundlePath": "module/policy/policy.onnx",
+        "inputName": "obs",
+        "outputName": "actions",
+        "observationDim": 585,
+        "actionDim": 120,
+        "inputShapes": [
+          {
+            "name": "obs",
+            "shape": [
+              1,
+              585
+            ]
+          }
+        ],
+        "outputShapes": [
+          {
+            "name": "actions",
+            "shape": [
+              1,
+              120
+            ]
+          }
+        ]
+      },
+      "validation": {
+        "structural": {
+          "level": "pass",
+          "errors": [],
+          "warnings": []
+        },
+        "semantic": {
+          "level": "pass",
+          "errors": [],
+          "warnings": []
+        },
+        "compatibility": {
+          "level": "warn",
+          "errors": [],
+          "warnings": [
+            "V132 model_100; 1600-frame reference parity and six 20 s browser-engine stability trials passed. Speed tracking, standing drift and physical walking remain unqualified."
+          ]
+        }
+      },
+      "qualification": {
+        "physicalActionDim": 12,
+        "controllerFeedbackDim": 108,
+        "hardwareDeployment": "unverified",
+        "simulation": "wasm-stability-verified-tracking-partial",
+        "mode": "virtual-servo-contract",
+        "note": "V132 model_100; 1600-frame reference parity and six 20 s browser-engine stability trials passed. Speed tracking, standing drift and physical walking remain unqualified."
+      },
+      "integrity_entries_verified": 46,
+      "files": {
+        "project.sim": {
+          "bytes": 2202260,
+          "sha256": "6c0243468b7b6cd85fde6616c53bb482a6178efbde5a752275ac884ed40076a7"
+        },
+        "policy.onnx": {
+          "bytes": 200388,
+          "sha256": "f13fad763f2367dc4b5084148791555ab3f0e039c18f0d94cd70179aeea4c4fe"
+        },
+        "sim2sim.profile.json": {
+          "bytes": 183947,
+          "sha256": "ff736d29ddbbd584c884288cc9a5fe0c3a229d2a2c206aca9d5fe501f0461068"
+        }
+      }
+    },
+    {
+      "name": "慢行",
+      "directory": "slow-walk",
+      "example_id": "pydog-gen4-walk-v30",
+      "downloaded_on": "2026-11-15",
+      "source_url": "https://sim2real.stackforce.cc/sim2real-examples/pydog-gen4-walk-v30.sim",
+      "original_bundle_id": "pydog-gen4-walk-v30-real-20261109",
+      "policy": {
+        "label": "policy.onnx",
+        "format": "onnx",
+        "browserUrl": "/pydog-gen4-walk-v30/policy/policy.onnx",
+        "bundlePath": "module/policy/policy.onnx",
+        "inputName": "obs",
+        "outputName": "actions",
+        "observationDim": 625,
+        "actionDim": 124,
+        "inputShapes": [
+          {
+            "name": "obs",
+            "shape": [
+              1,
+              625
+            ]
+          }
+        ],
+        "outputShapes": [
+          {
+            "name": "actions",
+            "shape": [
+              1,
+              124
+            ]
+          }
+        ]
+      },
+      "validation": {
+        "structural": {
+          "level": "pass",
+          "errors": [],
+          "warnings": []
+        },
+        "semantic": {
+          "level": "pass",
+          "errors": [],
+          "warnings": []
+        },
+        "compatibility": {
+          "level": "warn",
+          "errors": [],
+          "warnings": [
+            "Walk v30 iteration 1499. Original course evaluation 9/13; velocity tracking remains incomplete. Hardware unverified."
+          ]
+        }
+      },
+      "qualification": {
+        "physicalActionDim": 12,
+        "controllerFeedbackDim": 112,
+        "hardwareDeployment": "unverified",
+        "simulation": "pending",
+        "mode": "virtual-servo-contract",
+        "note": "Walk v30 iteration 1499. Original course evaluation 9/13; velocity tracking remains incomplete. Hardware unverified."
+      },
+      "integrity_entries_verified": 49,
+      "files": {
+        "project.sim": {
+          "bytes": 2296556,
+          "sha256": "5cee4bbfa2115c8d9730e4f319a3f33b7081be495bf2dc21431fae2e3fe58853"
+        },
+        "policy.onnx": {
+          "bytes": 215211,
+          "sha256": "642f43baf5f9df4a7f59cf57b6bb38278e86073c13e7636a91aafbfbe757b7f4"
+        },
+        "sim2sim.profile.json": {
+          "bytes": 185924,
+          "sha256": "62005b429dbf1465c0909e2c62d2567a575e356482899cfbaa07813286b944a8"
+        }
+      }
+    },
+    {
+      "name": "跳跃",
+      "directory": "bound",
+      "example_id": "pydog-gen4-bound",
+      "downloaded_on": "2026-11-15",
+      "source_url": "https://sim2real.stackforce.cc/sim2real-examples/pydog-gen4-bound.sim",
+      "original_bundle_id": "pydog-gen4-bound-real-six-direction-20261013",
+      "policy": {
+        "label": "six-direction-site.onnx",
+        "format": "onnx",
+        "browserUrl": "/pydog-gen4-bound-unified/policy/six-direction-site.onnx",
+        "bundlePath": "module/policy/policy.onnx",
+        "inputName": "obs",
+        "outputName": "actions",
+        "observationDim": 860,
+        "actionDim": 159,
+        "inputShapes": [
+          {
+            "name": "obs",
+            "shape": [
+              1,
+              860
+            ]
+          }
+        ],
+        "outputShapes": [
+          {
+            "name": "actions",
+            "shape": [
+              1,
+              159
+            ]
+          }
+        ]
+      },
+      "validation": {
+        "structural": {
+          "level": "pass",
+          "errors": [],
+          "warnings": []
+        },
+        "semantic": {
+          "level": "pass",
+          "errors": [],
+          "warnings": []
+        },
+        "compatibility": {
+          "level": "warn",
+          "errors": [],
+          "warnings": [
+            "Startup stability conditions removed at the owner request. Servo feedback, base height and world velocity use estimates; physical locomotion is not qualified."
+          ]
+        }
+      },
+      "qualification": {
+        "release": "gen4-bound-trot-unified-20261013",
+        "physicalActionDim": 12,
+        "controllerFeedbackDim": 147,
+        "singleAxisCommandsOnly": true,
+        "hardwareDeployment": "locomotion-unverified",
+        "esp32Compiler": "generic-onnx-fp32",
+        "startupStabilityGate": false,
+        "note": "Startup stability conditions removed at the owner request. Servo feedback, base height and world velocity use estimates; physical locomotion is not qualified."
+      },
+      "integrity_entries_verified": 42,
+      "files": {
+        "project.sim": {
+          "bytes": 2618280,
+          "sha256": "18bd978e216a2286906a29f5ba490805dd6ba811797bb94dfd93409808924254"
+        },
+        "policy.onnx": {
+          "bytes": 1313491,
+          "sha256": "9e663148794e1cbc6ca6281e02cbcd3546d437df71960ee5d84b50cd676fda59"
+        },
+        "sim2sim.profile.json": {
+          "bytes": 223347,
+          "sha256": "4c5c5a26221ed5edcb65f27c1b615e2052406948f2eda909c0c32b641915fe0e"
+        }
+      }
+    },
+    {
+      "name": "翻倒自起立",
+      "directory": "self-righting",
+      "example_id": "pydog-gen4-stabilize",
+      "downloaded_on": "2026-11-15",
+      "source_url": "https://sim2real.stackforce.cc/sim2real-examples/pydog-gen4-stabilize.sim",
+      "original_bundle_id": "pydog-gen4-stabilize-real-20260912",
+      "policy": {
+        "label": "terminal-hold.onnx",
+        "format": "onnx",
+        "browserUrl": "/pydog-gen4-stabilize/policy/terminal-hold.onnx",
+        "bundlePath": "module/policy/terminal-hold.onnx",
+        "inputName": "obs",
+        "outputName": "actions",
+        "observationDim": 605,
+        "actionDim": 127,
+        "inputShapes": [
+          {
+            "name": "obs",
+            "shape": [
+              1,
+              605
+            ]
+          }
+        ],
+        "outputShapes": [
+          {
+            "name": "actions",
+            "shape": [
+              1,
+              127
+            ]
+          }
+        ]
+      },
+      "validation": {
+        "structural": {
+          "level": "pass",
+          "errors": [],
+          "warnings": []
+        },
+        "semantic": {
+          "level": "pass",
+          "errors": [],
+          "warnings": []
+        },
+        "compatibility": {
+          "level": "warn",
+          "errors": [],
+          "warnings": [
+            "IMU-only recovery candidate. Pose stable does not verify physical standing; no automatic gait handoff."
+          ]
+        }
+      },
+      "qualification": {
+        "physicalActionDim": 12,
+        "controllerFeedbackDim": 115,
+        "hardwareDeployment": "unverified",
+        "simulation": "limited",
+        "mode": "imu-pwm-recovery",
+        "note": "IMU-only recovery candidate. Pose stable does not verify physical standing; no automatic gait handoff.",
+        "robustnessPassed": false,
+        "simulationFailures": [
+          {
+            "name": "left",
+            "gain": 1.2,
+            "delayTicks": 1,
+            "failedGates": [
+              "support"
+            ]
+          },
+          {
+            "name": "right",
+            "gain": 1.2,
+            "delayTicks": 1,
+            "failedGates": [
+              "support"
+            ]
+          },
+          {
+            "name": "front",
+            "gain": 1.2,
+            "delayTicks": 1,
+            "failedGates": [
+              "support"
+            ]
+          },
+          {
+            "name": "back",
+            "gain": 1.2,
+            "delayTicks": 1,
+            "failedGates": [
+              "support"
+            ]
+          }
+        ],
+        "simulationScope": "Five nominal standing tests and fifteen attitude recovery tests passed at 1000 Hz. Strict support and standing checks passed 11/15 cases. Full robustness not qualified; see simulationFailures.",
+        "evidenceSha256": "2640044dd4c78a0fcf779a7e8837790c0d9ffb7de0fd88b87cece0c1a7e82b64",
+        "terminalReentrySimulation": "four directions passed; hypothetical PWM plant only",
+        "timeoutBehavior": "Operator-selected continuous recovery; 60-second signal is advisory. IMU, output and numerical faults still stop.",
+        "controllerVersion": 2
+      },
+      "integrity_entries_verified": 49,
+      "files": {
+        "project.sim": {
+          "bytes": 3891203,
+          "sha256": "21e717567de8c58d0d156c98fb6e7842c771f4858a8f78d5c1915e91f4c61e22"
+        },
+        "policy.onnx": {
+          "bytes": 2524554,
+          "sha256": "08f02285e317b3bfe5b152a2ed0982dd78d042a6ee4d60b6d0e3bfc12c5cf352"
+        },
+        "sim2sim.profile.json": {
+          "bytes": 187628,
+          "sha256": "71fa06f244bb07d7bfdf44dcfd0a915f292805dd800f07fd95eb7abef2178d33"
+        }
+      }
+    }
+  ]
+}

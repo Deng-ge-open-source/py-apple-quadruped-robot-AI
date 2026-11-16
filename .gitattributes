@@ -1,0 +1,2 @@
+# Preserve exact bytes for models, policies, source packages and checksums.
+* -text

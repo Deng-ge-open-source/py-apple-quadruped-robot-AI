@@ -1,0 +1,14 @@
+{
+  "revision": "RevB",
+  "board_combination": "StackForce ESP32-S3 Zero + Connector HAT",
+  "files": {
+    "SCH_Connector-HAT-RevB_2026-09-17.pdf": {
+      "bytes": 114653,
+      "sha256": "b0861a51fd07a496d2d93f5dcd1d2627aa18bf37c2fb0cc9dc649fafd85a2809"
+    },
+    "SCH_ESP32-S3-Core-RevB_2026-09-17.pdf": {
+      "bytes": 255237,
+      "sha256": "4a71d6b559361de7cc9b80eeb7d92c853c0a316d1bc47a165d4e64f5e5f51081"
+    }
+  }
+}

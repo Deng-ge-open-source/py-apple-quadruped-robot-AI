@@ -1,0 +1,80 @@
+{
+  "name": "跳跃",
+  "directory": "bound",
+  "example_id": "pydog-gen4-bound",
+  "downloaded_on": "2026-11-15",
+  "source_url": "https://sim2real.stackforce.cc/sim2real-examples/pydog-gen4-bound.sim",
+  "original_bundle_id": "pydog-gen4-bound-real-six-direction-20261013",
+  "policy": {
+    "label": "six-direction-site.onnx",
+    "format": "onnx",
+    "browserUrl": "/pydog-gen4-bound-unified/policy/six-direction-site.onnx",
+    "bundlePath": "module/policy/policy.onnx",
+    "inputName": "obs",
+    "outputName": "actions",
+    "observationDim": 860,
+    "actionDim": 159,
+    "inputShapes": [
+      {
+        "name": "obs",
+        "shape": [
+          1,
+          860
+        ]
+      }
+    ],
+    "outputShapes": [
+      {
+        "name": "actions",
+        "shape": [
+          1,
+          159
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "structural": {
+      "level": "pass",
+      "errors": [],
+      "warnings": []
+    },
+    "semantic": {
+      "level": "pass",
+      "errors": [],
+      "warnings": []
+    },
+    "compatibility": {
+      "level": "warn",
+      "errors": [],
+      "warnings": [
+        "Startup stability conditions removed at the owner request. Servo feedback, base height and world velocity use estimates; physical locomotion is not qualified."
+      ]
+    }
+  },
+  "qualification": {
+    "release": "gen4-bound-trot-unified-20261013",
+    "physicalActionDim": 12,
+    "controllerFeedbackDim": 147,
+    "singleAxisCommandsOnly": true,
+    "hardwareDeployment": "locomotion-unverified",
+    "esp32Compiler": "generic-onnx-fp32",
+    "startupStabilityGate": false,
+    "note": "Startup stability conditions removed at the owner request. Servo feedback, base height and world velocity use estimates; physical locomotion is not qualified."
+  },
+  "integrity_entries_verified": 42,
+  "files": {
+    "project.sim": {
+      "bytes": 2618280,
+      "sha256": "18bd978e216a2286906a29f5ba490805dd6ba811797bb94dfd93409808924254"
+    },
+    "policy.onnx": {
+      "bytes": 1313491,
+      "sha256": "9e663148794e1cbc6ca6281e02cbcd3546d437df71960ee5d84b50cd676fda59"
+    },
+    "sim2sim.profile.json": {
+      "bytes": 223347,
+      "sha256": "4c5c5a26221ed5edcb65f27c1b615e2052406948f2eda909c0c32b641915fe0e"
+    }
+  }
+}

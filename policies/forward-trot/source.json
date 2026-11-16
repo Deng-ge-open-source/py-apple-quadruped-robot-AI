@@ -1,0 +1,78 @@
+{
+  "name": "向前小跑",
+  "directory": "forward-trot",
+  "example_id": "pydog-gen4-stand-forward",
+  "downloaded_on": "2026-11-15",
+  "source_url": "https://sim2real.stackforce.cc/sim2real-examples/pydog-gen4-stand-forward.sim",
+  "original_bundle_id": "pydog-gen4-stand-forward-real-20261108",
+  "policy": {
+    "label": "policy.onnx",
+    "format": "onnx",
+    "browserUrl": "/pydog-gen4-stand-forward/policy/policy.onnx",
+    "bundlePath": "module/policy/policy.onnx",
+    "inputName": "obs",
+    "outputName": "actions",
+    "observationDim": 585,
+    "actionDim": 120,
+    "inputShapes": [
+      {
+        "name": "obs",
+        "shape": [
+          1,
+          585
+        ]
+      }
+    ],
+    "outputShapes": [
+      {
+        "name": "actions",
+        "shape": [
+          1,
+          120
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "structural": {
+      "level": "pass",
+      "errors": [],
+      "warnings": []
+    },
+    "semantic": {
+      "level": "pass",
+      "errors": [],
+      "warnings": []
+    },
+    "compatibility": {
+      "level": "warn",
+      "errors": [],
+      "warnings": [
+        "Stand/forward switching preview candidate (seed 7, iteration 560). Long forward runs drift in heading; hardware unverified."
+      ]
+    }
+  },
+  "qualification": {
+    "physicalActionDim": 12,
+    "controllerFeedbackDim": 108,
+    "hardwareDeployment": "unverified",
+    "simulation": "preview",
+    "mode": "virtual-servo-contract",
+    "note": "Stand/forward switching preview candidate (seed 7, iteration 560). Long forward runs drift in heading; hardware unverified."
+  },
+  "integrity_entries_verified": 43,
+  "files": {
+    "project.sim": {
+      "bytes": 1904261,
+      "sha256": "3a7da260013cf10e8f371dee1327fc8246ef34876dbff78187d94def080b00de"
+    },
+    "policy.onnx": {
+      "bytes": 200388,
+      "sha256": "f0f552c40a3d68ebd23217c9cdfc8a910ce9f4321d5da630ba9b018cb7279406"
+    },
+    "sim2sim.profile.json": {
+      "bytes": 184982,
+      "sha256": "a8fbb45bc5f3f5ced77d49d84b236814bdf492af07a559629a265264f001b881"
+    }
+  }
+}

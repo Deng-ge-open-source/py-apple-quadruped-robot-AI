@@ -1,0 +1,53 @@
+{
+  "diagram": "zero-hat-connections.png",
+  "illustration": "Board geometry and component positions from uploaded October Gerbers; external module drawings are schematic.",
+  "source_sha256": {
+    "HAT.zip": "81eac9af7195fe967603443a4359767e4705491e874e319a5ce9f989fe0893e3",
+    "Gerber_ESP32-S3-Core-RevB_1_2026-10-08.zip": "47d7a554299c3c08dec53b42020613500e645eb274d9576ad2f48840f5e8f4cf",
+    "controller.cpp": "06c74d50b079a90b6a56bfacc964e212b6936f6f2a04e7bcea36c997ef7a9213",
+    "imu_driver.h": "055a1f6b6cd794f66e167de696a018ddcc30e8f70b777a20118a3aa0cf7860be",
+    "display_base.h": "5cb4c7564e5d413f8aeef829ecd93d411e3e85a061e9d45d9705b47a0e11c643",
+    "touch_bus.h": "74b66dabd9a87c1a7c7ab61fd3c3793b4282dafb5374e6b6a7b943252bc408f7"
+  },
+  "connector_pin_maps_verified": {
+    "CN24": [
+      "3V3",
+      "GND",
+      "GPIO2",
+      "GPIO1"
+    ],
+    "CN22": [
+      "3V3",
+      "GND",
+      "GPIO21",
+      "GPIO47"
+    ],
+    "CN25": [
+      "GPIO14",
+      "GPIO10",
+      "GPIO9",
+      "GPIO8",
+      "GPIO11",
+      "GPIO12",
+      "3V3",
+      "GND"
+    ],
+    "CN26": [
+      "3V3",
+      "GND",
+      "GPIO16",
+      "GPIO15"
+    ],
+    "CN27": [
+      "3V3",
+      "GND",
+      "GPIO16",
+      "GPIO15"
+    ]
+  },
+  "firmware_gpio_checks": "passed",
+  "display_harness": {
+    "CN25_pin_4": "unconnected",
+    "display_reset": "not driven by firmware"
+  }
+}

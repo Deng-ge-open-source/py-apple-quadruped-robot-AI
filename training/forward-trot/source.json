@@ -1,0 +1,33 @@
+{
+  "downloaded_on": "2026-11-15",
+  "public_example_url": "https://sim.stackforce.cc/",
+  "public_example_name": "菠萝狗 第四代 12自由度",
+  "public_example_id": "pineapple-dog-gen4-training-v2",
+  "download_endpoint": "https://sim.stackforce.cc/api/examples/signed-link?example=validated%2Fpineapple-dog-gen4-training-v2%2Fpineapple-dog-gen4.simready",
+  "deployment_source": "https://sim2real.stackforce.cc/sim2real-examples/pydog-gen4-stand-forward.sim",
+  "training_origin_archive": "gen4-stand-forward-preview-20261108-v1.zip",
+  "origin_sha256": "f782f81dd0f3c98070d94c04a74f0f34c0dd989599fe0b318eea2cef45671e4e",
+  "verification": {
+    "public_training_config_matches_origin": true,
+    "public_joint_mapping_matches_origin": true,
+    "public_robot_source_matches_origin": true
+  },
+  "files": {
+    "effective-training.json": {
+      "bytes": 80278,
+      "sha256": "b728e4dbfb5ca85ff8c27d29b8eee5605de1d18405b308d541ae31406008a53e"
+    },
+    "mjlab-training-project.zip": {
+      "bytes": 1685718,
+      "sha256": "a975d55971e4569e3ea6ecd01f4c88d8f3907998f1af938164466a7ed136c79d"
+    },
+    "py-apple-dog-forward.simready": {
+      "bytes": 1533839,
+      "sha256": "9d2dfc4a06d658c08e57bbbfe93ddf33caf8918573a34b828644e3a24ff844ae"
+    },
+    "training-settings.json": {
+      "bytes": 46164,
+      "sha256": "3694cdbaa3935a8ae88507bb7f4e2cd63192d3ed85665c15c276256454a2d054"
+    }
+  }
+}

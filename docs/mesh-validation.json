@@ -1,0 +1,605 @@
+{
+  "units": "mm",
+  "parts": [
+    {
+      "file": "stl/body_and_upper_legs/body_mm.stl",
+      "source_id": "Part__Feature",
+      "source_label": "body v1",
+      "quantity": 1,
+      "cad_valid": true,
+      "cad_volume_mm3": 46884.7049578217,
+      "bounds_mm": [
+        94.99000549316406,
+        130.0,
+        40.0
+      ],
+      "triangles": 21264,
+      "closed": true,
+      "source_center_mm": [
+        -1.143607532429862,
+        -2.3156217403277717,
+        50.86111093888377
+      ],
+      "rotation_axis": [
+        1.0,
+        -0.0,
+        0.0
+      ],
+      "rotation_angle_deg": 0.0,
+      "translation_mm": [
+        -0.0,
+        0.9795697313130134,
+        -33.608037896801186
+      ],
+      "sha256": "15d6df6fc3518c788166e9220de59c404ea6649f46babe32b704502189616fb2",
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_mm3": 46861.38735439644,
+      "components": 1,
+      "z_min": 0.0,
+      "shell_volumes_mm3": [
+        46861.38735439646
+      ],
+      "part_number": 1
+    },
+    {
+      "file": "stl/body_and_upper_legs/shoulder_01_mm.stl",
+      "source_id": "Part__Feature007",
+      "source_label": "肩部 v1",
+      "quantity": 1,
+      "cad_valid": true,
+      "cad_volume_mm3": 9034.604673638152,
+      "bounds_mm": [
+        41.74813270568848,
+        42.884151458740234,
+        30.0
+      ],
+      "triangles": 6640,
+      "closed": true,
+      "source_center_mm": [
+        42.938611652324255,
+        81.68543893144034,
+        55.107535918041854
+      ],
+      "rotation_axis": [
+        2.220446049250313e-16,
+        -1.0,
+        0.0
+      ],
+      "rotation_angle_deg": 90.0,
+      "translation_mm": [
+        49.33216135546981,
+        -80.7625343222342,
+        -24.400000000000027
+      ],
+      "sha256": "4f120c38784e6f685abc0a33ad0b9a3de55a9028900e4094c5f02020cdf13755",
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_mm3": 9029.673679855916,
+      "components": 1,
+      "z_min": -1.7763568394002505e-15,
+      "shell_volumes_mm3": [
+        9029.673679855918
+      ],
+      "part_number": 2
+    },
+    {
+      "file": "stl/body_and_upper_legs/shoulder_cover_01_mm.stl",
+      "source_id": "Part__Feature008",
+      "source_label": "肩部盖 v1",
+      "quantity": 1,
+      "cad_valid": true,
+      "cad_volume_mm3": 6101.865668061764,
+      "bounds_mm": [
+        72.2999038696289,
+        40.0,
+        9.000000000000002
+      ],
+      "triangles": 6376,
+      "closed": true,
+      "source_center_mm": [
+        -6.178128621821338e-17,
+        65.1094929699592,
+        56.48914976190332
+      ],
+      "rotation_axis": [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "rotation_angle_deg": 89.99999999999999,
+      "translation_mm": [
+        -0.0,
+        -53.40803789680112,
+        67.02043026868698
+      ],
+      "sha256": "2bf644dd1d7b1363a8f63a4e5b364c86c7ffc2f3c400125b4608bc998cba8511",
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_mm3": 6101.771719946075,
+      "components": 1,
+      "z_min": -1.887379141862766e-15,
+      "shell_volumes_mm3": [
+        6101.771719946075
+      ],
+      "part_number": 3
+    },
+    {
+      "file": "stl/body_and_upper_legs/shoulder_02_mm.stl",
+      "source_id": "Part__Feature011",
+      "source_label": "肩部 v1(镜像)",
+      "quantity": 1,
+      "cad_valid": true,
+      "cad_volume_mm3": 9034.604970610939,
+      "bounds_mm": [
+        41.74813270568848,
+        42.884151458740234,
+        30.0
+      ],
+      "triangles": 6640,
+      "closed": true,
+      "source_center_mm": [
+        -42.9386114554249,
+        81.68543924725051,
+        55.10753593194946
+      ],
+      "rotation_axis": [
+        -2.220446049250313e-16,
+        1.0,
+        0.0
+      ],
+      "rotation_angle_deg": 90.0,
+      "translation_mm": [
+        -49.332161355469665,
+        -80.76253432223426,
+        -24.399999999999984
+      ],
+      "sha256": "aa5447aa7651b856cbd2bd7f9c0e24df70f170149f44bb3ec8444f0d754bc45a",
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_mm3": 9029.673679727142,
+      "components": 1,
+      "z_min": -1.7763568394002505e-15,
+      "shell_volumes_mm3": [
+        9029.673679727142
+      ],
+      "part_number": 4
+    },
+    {
+      "file": "stl/body_and_upper_legs/shoulder_03_mm.stl",
+      "source_id": "Part__Feature014",
+      "source_label": "肩部 v1(镜像) (1)",
+      "quantity": 1,
+      "cad_valid": true,
+      "cad_volume_mm3": 9034.604970610937,
+      "bounds_mm": [
+        41.74813270568848,
+        42.884151458740234,
+        30.0
+      ],
+      "triangles": 6640,
+      "closed": true,
+      "source_center_mm": [
+        42.93861145542489,
+        -83.68543924725041,
+        55.107535931949556
+      ],
+      "rotation_axis": [
+        -2.220446049250313e-16,
+        -1.0,
+        -0.0
+      ],
+      "rotation_angle_deg": 90.0,
+      "translation_mm": [
+        49.33216135546981,
+        82.7625343222341,
+        -24.400000000000027
+      ],
+      "sha256": "1eafb4bb61c6e33996919a381ad537b53b40402015bbf89610e66f60e258aa99",
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_mm3": 9029.673679734997,
+      "components": 1,
+      "z_min": -1.7763568394002505e-15,
+      "shell_volumes_mm3": [
+        9029.673679734995
+      ],
+      "part_number": 5
+    },
+    {
+      "file": "stl/body_and_upper_legs/shoulder_cover_02_mm.stl",
+      "source_id": "Part__Feature015",
+      "source_label": "肩部盖 v1(镜像)",
+      "quantity": 1,
+      "cad_valid": true,
+      "cad_volume_mm3": 6101.865668061765,
+      "bounds_mm": [
+        72.2999038696289,
+        40.0,
+        9.0
+      ],
+      "triangles": 6376,
+      "closed": true,
+      "source_center_mm": [
+        2.7843007103644635e-14,
+        -67.1094929699592,
+        56.48914976190333
+      ],
+      "rotation_axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "rotation_angle_deg": 90.00000000000001,
+      "translation_mm": [
+        -2.842170943040401e-14,
+        53.40803789680109,
+        69.02043026868701
+      ],
+      "sha256": "76fdd393b6f464d2b24c36026a52d52dc4b95275bcf4d54b783b59ed6fd0c91d",
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_mm3": 6101.77171993689,
+      "components": 1,
+      "z_min": 0.0,
+      "shell_volumes_mm3": [
+        6101.77171993689
+      ],
+      "part_number": 6
+    },
+    {
+      "file": "stl/body_and_upper_legs/shoulder_04_mm.stl",
+      "source_id": "Part__Feature018",
+      "source_label": "肩部 v1(镜像)(镜像)",
+      "quantity": 1,
+      "cad_valid": true,
+      "cad_volume_mm3": 9034.604673638149,
+      "bounds_mm": [
+        41.74813270568848,
+        42.884151458740234,
+        30.0
+      ],
+      "triangles": 6640,
+      "closed": true,
+      "source_center_mm": [
+        -42.93861165232424,
+        -83.68543893144025,
+        55.107535918041755
+      ],
+      "rotation_axis": [
+        2.220446049250313e-16,
+        1.0,
+        0.0
+      ],
+      "rotation_angle_deg": 90.0,
+      "translation_mm": [
+        -49.332161355469665,
+        82.76253432223416,
+        -24.399999999999984
+      ],
+      "sha256": "e9036162a8f96f4556e6172553e89402e667910369fa8e3193a2a7a303f440b7",
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_mm3": 9029.673679861044,
+      "components": 1,
+      "z_min": -1.7763568394002505e-15,
+      "shell_volumes_mm3": [
+        9029.673679861044
+      ],
+      "part_number": 7
+    },
+    {
+      "file": "stl/body_and_upper_legs/thigh_01_mm.stl",
+      "source_id": "Part__Feature027",
+      "source_label": "大腿 v1",
+      "quantity": 1,
+      "cad_valid": true,
+      "cad_volume_mm3": 12816.471908890018,
+      "bounds_mm": [
+        81.11143112182617,
+        83.52947616577148,
+        23.700133287828066
+      ],
+      "triangles": 9464,
+      "closed": true,
+      "source_center_mm": [
+        -65.72763757748068,
+        -66.6366458252634,
+        42.08677278729647
+      ],
+      "rotation_axis": [
+        0.0,
+        -1.0,
+        -0.0
+      ],
+      "rotation_angle_deg": 90.0,
+      "translation_mm": [
+        29.641298753569686,
+        61.9234326322554,
+        76.5000050620201
+      ],
+      "mesh_additional_z_translation_mm": 0.00012871019134763628,
+      "sha256": "7054fcfa9188085a7af9854cdd3aa17f039466985ff34a1c53acca27dce17699",
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_mm3": 12813.018522904566,
+      "components": 1,
+      "z_min": 0.0,
+      "shell_volumes_mm3": [
+        12813.018522904562
+      ],
+      "part_number": 8
+    },
+    {
+      "file": "stl/body_and_upper_legs/thigh_02_mm.stl",
+      "source_id": "Part__Feature032",
+      "source_label": "大腿 v001",
+      "quantity": 1,
+      "cad_valid": true,
+      "cad_volume_mm3": 12816.471908890027,
+      "bounds_mm": [
+        81.11143112182617,
+        83.52947616577148,
+        23.700133287828066
+      ],
+      "triangles": 9464,
+      "closed": true,
+      "source_center_mm": [
+        -65.72763757748059,
+        106.27262031263021,
+        42.08677278729624
+      ],
+      "rotation_axis": [
+        2.345056116312953e-16,
+        -1.0,
+        0.0
+      ],
+      "rotation_angle_deg": 90.00000000000001,
+      "translation_mm": [
+        29.641298753569288,
+        -110.98583350563783,
+        76.50000506202
+      ],
+      "mesh_additional_z_translation_mm": 0.00012871019134763628,
+      "sha256": "a64d5795b51b47c1bc68e0f8787625efc137fe8022058fb0cbe9b48f7e0391ff",
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_mm3": 12813.018552112326,
+      "components": 1,
+      "z_min": 0.0,
+      "shell_volumes_mm3": [
+        12813.018552112322
+      ],
+      "part_number": 9
+    },
+    {
+      "file": "stl/body_and_upper_legs/thigh_03_mm.stl",
+      "source_id": "Part__Feature033",
+      "source_label": "大腿 v1(镜像)",
+      "quantity": 1,
+      "cad_valid": true,
+      "cad_volume_mm3": 12816.423970868354,
+      "bounds_mm": [
+        81.11143112182617,
+        83.52947616577148,
+        23.700133287828066
+      ],
+      "triangles": 9444,
+      "closed": true,
+      "source_center_mm": [
+        65.47764352550415,
+        -66.63658590711827,
+        42.08677440105781
+      ],
+      "rotation_axis": [
+        -3.919868806514892e-16,
+        1.0,
+        0.0
+      ],
+      "rotation_angle_deg": 89.99999999999999,
+      "translation_mm": [
+        -29.64129875356965,
+        61.923432632255455,
+        76.25000506201994
+      ],
+      "mesh_additional_z_translation_mm": 0.00012871019134763628,
+      "sha256": "cb9153263ce5cd9861ab2dbeb78a246dddca091656448ad660ad5b34b79f3f4c",
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_mm3": 12813.019592181057,
+      "components": 1,
+      "z_min": 0.0,
+      "shell_volumes_mm3": [
+        12813.019592181057
+      ],
+      "part_number": 10
+    },
+    {
+      "file": "stl/body_and_upper_legs/thigh_04_mm.stl",
+      "source_id": "Part__Feature034",
+      "source_label": "大腿 v1(镜像)001",
+      "quantity": 1,
+      "cad_valid": true,
+      "cad_volume_mm3": 12816.423970868342,
+      "bounds_mm": [
+        81.11143112182617,
+        83.52947616577148,
+        23.700133287828066
+      ],
+      "triangles": 9444,
+      "closed": true,
+      "source_center_mm": [
+        65.72764352550416,
+        106.2726802307755,
+        42.08677440105798
+      ],
+      "rotation_axis": [
+        -2.3946470441866063e-16,
+        1.0,
+        0.0
+      ],
+      "rotation_angle_deg": 90.0,
+      "translation_mm": [
+        -29.641298753569856,
+        -110.98583350563852,
+        76.50000506202001
+      ],
+      "mesh_additional_z_translation_mm": 0.00012871019134763628,
+      "sha256": "1619f703411aeb630996b95c10338a6119ba806a054a3e94756d14ce01583d36",
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_mm3": 12813.019565433913,
+      "components": 1,
+      "z_min": 0.0,
+      "shell_volumes_mm3": [
+        12813.019565433911
+      ],
+      "part_number": 11
+    },
+    {
+      "file": "stl/body_and_upper_legs/display_top_mm.stl",
+      "source_id": "Part__Feature051",
+      "source_label": "显示屏顶 v1",
+      "quantity": 1,
+      "cad_valid": true,
+      "cad_volume_mm3": 33585.02990220989,
+      "bounds_mm": [
+        74.66829681396484,
+        160.75,
+        63.40777185559273
+      ],
+      "triangles": 11918,
+      "closed": true,
+      "source_center_mm": [
+        0.27537260488721604,
+        -44.87080777390966,
+        86.10444841327066
+      ],
+      "rotation_axis": [
+        0.0,
+        1.0,
+        -0.0
+      ],
+      "rotation_angle_deg": 180.0,
+      "translation_mm": [
+        0.4999999999999929,
+        36.44627858924826,
+        96.7678004884036
+      ],
+      "mesh_additional_z_translation_mm": -0.1371309459209442,
+      "sha256": "62e2be3624cb8d52069ee61e04532d3e14b29f7730fd499c01fce64efd37dca2",
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_mm3": 33584.041396029315,
+      "components": 2,
+      "z_min": 0.0,
+      "shell_volumes_mm3": [
+        33670.307609027266,
+        -86.26621299794715
+      ],
+      "part_number": 12
+    },
+    {
+      "file": "stl/lower_legs/FR_calf_with_wheel_mm.stl",
+      "source_label": "FR 前右整体小腿（含轮子）",
+      "quantity": 1,
+      "source_sha256": "0d04dd349e8a31e8df85823e7e0e1ddb82ff0938e31b9df5e9ae8dfa561c2c6d",
+      "sha256": "f5546b9e1f5ec5d13717f83ad89fab9ad48e5e0a7e68f2b63eab5ab5d40489dd",
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_mm3": 19943.817135019828,
+      "components": 3,
+      "triangles": 11550,
+      "bounds_mm": [
+        100.80816650390625,
+        37.305580139160156,
+        29.091028213500977
+      ],
+      "z_min": 0.0,
+      "translation_mm": [
+        -50.404083251953125,
+        -18.652790069580078,
+        -0.0
+      ],
+      "print_mode": "整体导入切片，保留原装配相对位置和间隙；不拆分、不添加连接料",
+      "part_number": 13
+    },
+    {
+      "file": "stl/lower_legs/FL_calf_with_wheel_mm.stl",
+      "source_label": "FL 前左整体小腿（含轮子）",
+      "quantity": 1,
+      "source_sha256": "518962626e7f2a3194040b5389b6cca8e6ef7ad4dd17855679de4d59383873bc",
+      "sha256": "1cb108b9296f6401c2c1925eb12902a78b4a7f1a7e2a70a042ac56d5e6f395d3",
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_mm3": 19944.814629068558,
+      "components": 3,
+      "triangles": 11548,
+      "bounds_mm": [
+        100.7059326171875,
+        37.19934844970703,
+        28.84075355529785
+      ],
+      "z_min": 0.0,
+      "translation_mm": [
+        -50.35296630859375,
+        -18.599674224853516,
+        -0.0
+      ],
+      "print_mode": "整体导入切片，保留原装配相对位置和间隙；不拆分、不添加连接料",
+      "part_number": 14
+    },
+    {
+      "file": "stl/lower_legs/RR_calf_with_wheel_mm.stl",
+      "source_label": "RR 后右整体小腿（含轮子）",
+      "quantity": 1,
+      "source_sha256": "c15dbe16d4e5030a9842ca1498fd310efc327efb1cdde86abffc9023aef5a7fc",
+      "sha256": "6add32ea0474f930415ecc606ed712e1da83c6622b4de436585f48610a16750a",
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_mm3": 19943.81758702445,
+      "components": 3,
+      "triangles": 11550,
+      "bounds_mm": [
+        103.71720886230469,
+        37.413875579833984,
+        29.246540069580078
+      ],
+      "z_min": 0.0,
+      "translation_mm": [
+        -51.858604431152344,
+        -18.706937789916992,
+        -0.0
+      ],
+      "print_mode": "整体导入切片，保留原装配相对位置和间隙；不拆分、不添加连接料",
+      "part_number": 15
+    },
+    {
+      "file": "stl/lower_legs/RL_calf_with_wheel_mm.stl",
+      "source_label": "RL 后左整体小腿（含轮子）",
+      "quantity": 1,
+      "source_sha256": "a6e234bc0a3b15e2da4635199bcaea14f139b0e67bff7e37a5544912c7fd77e8",
+      "sha256": "b3ecafc34c779c7de906fed58461ec2f35b11f61ddd53f58541bdfadc1e83e90",
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_mm3": 19944.816227485997,
+      "components": 3,
+      "triangles": 11548,
+      "bounds_mm": [
+        105.59516906738281,
+        37.19934844970703,
+        28.81340980529785
+      ],
+      "z_min": 0.0,
+      "translation_mm": [
+        -52.797584533691406,
+        -18.599674224853516,
+        -0.0
+      ],
+      "print_mode": "整体导入切片，保留原装配相对位置和间隙；不拆分、不添加连接料",
+      "part_number": 16
+    }
+  ],
+  "assembly_references": [],
+  "validation_scope": "geometry only; 16 print files; each lower-leg file retains three closed shells in its supplied assembled positions"
+}
