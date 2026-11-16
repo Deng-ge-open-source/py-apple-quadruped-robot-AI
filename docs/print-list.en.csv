@@ -1,0 +1,17 @@
+number,file,source_part,qty,X_mm,Y_mm,Z_mm,closed_shells
+01,stl/body_and_upper_legs/body_mm.stl,body v1,1,94.99,130.0,40.0,1
+02,stl/body_and_upper_legs/shoulder_01_mm.stl,Shoulder v1,1,41.748,42.884,30.0,1
+03,stl/body_and_upper_legs/shoulder_cover_01_mm.stl,Shoulder cover v1,1,72.3,40.0,9.0,1
+04,stl/body_and_upper_legs/shoulder_02_mm.stl,Shoulder v1(mirrored),1,41.748,42.884,30.0,1
+05,stl/body_and_upper_legs/shoulder_03_mm.stl,Shoulder v1(mirrored) (1),1,41.748,42.884,30.0,1
+06,stl/body_and_upper_legs/shoulder_cover_02_mm.stl,Shoulder cover v1(mirrored),1,72.3,40.0,9.0,1
+07,stl/body_and_upper_legs/shoulder_04_mm.stl,Shoulder v1(mirrored)(mirrored),1,41.748,42.884,30.0,1
+08,stl/body_and_upper_legs/thigh_01_mm.stl,Thigh v1,1,81.111,83.529,23.7,1
+09,stl/body_and_upper_legs/thigh_02_mm.stl,Thigh v001,1,81.111,83.529,23.7,1
+10,stl/body_and_upper_legs/thigh_03_mm.stl,Thigh v1(mirrored),1,81.111,83.529,23.7,1
+11,stl/body_and_upper_legs/thigh_04_mm.stl,Thigh v1(mirrored)001,1,81.111,83.529,23.7,1
+12,stl/body_and_upper_legs/display_top_mm.stl,Display top v1,1,74.668,160.75,63.408,2
+13,stl/lower_legs/FR_calf_with_wheel_mm.stl,FR front rightComplete lower leg（including wheel）,1,100.808,37.306,29.091,3
+14,stl/lower_legs/FL_calf_with_wheel_mm.stl,FL front leftComplete lower leg（including wheel）,1,100.706,37.199,28.841,3
+15,stl/lower_legs/RR_calf_with_wheel_mm.stl,RR rear rightComplete lower leg（including wheel）,1,103.717,37.414,29.247,3
+16,stl/lower_legs/RL_calf_with_wheel_mm.stl,RL rear leftComplete lower leg（including wheel）,1,105.595,37.199,28.813,3

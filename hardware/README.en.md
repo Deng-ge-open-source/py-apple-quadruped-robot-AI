@@ -4,10 +4,14 @@
 
 Py-Apple Dog 5 uses the **StackForce ESP32-S3 Zero core board and Connector HAT, revision RevB**.
 
+<div align="center">
+
 | Board | Schematic | Role |
 | :---: | :---: | :---: |
 | ESP32-S3 Zero core board RevB | [Download core schematic](schematics/SCH_ESP32-S3-Core-RevB_2026-09-17.pdf) | ESP32-S3 controller, power, USB, and 40-pin interface |
 | Connector HAT RevB | [Download HAT schematic](schematics/SCH_Connector-HAT-RevB_2026-09-17.pdf) | Signal and logic-power distribution for external modules |
+
+</div>
 
 The core board uses an **ESP32-S3-WROOM-1U-N16R8**, with 16 MB flash and 8 MB PSRAM. With matching firmware, an IMU, servo interfaces, and power, compatible motion policies can run on the low-cost ESP32 controller.
 
@@ -15,7 +19,7 @@ The HAT connects external modules such as an IMU, PCA9685, or servo-bus adapter;
 
 ## Build your own core board and HAT
 
-To manufacture these boards or use them in your own robot, visit **[StackForce ESP32 Zero](https://github.com/Deng-ge-open-source/StackForce-ESP32-Zero)**. PCB manufacturing files, schematics, pinout diagrams and assembly instructions are organized there to help you move from connecting peripherals to **building your own controller**.
+To manufacture these boards or use them in your own robot, visit **[StackForce ESP32 Zero](https://github.com/Deng-ge-open-source/StackForce-ESP32-Zero/blob/main/README.en.md)**. PCB manufacturing files, schematics, pinout diagrams and assembly instructions are organized there to help you move from connecting peripherals to **building your own controller**.
 
 <table align="center">
 <tr><th align="center">ESP32 Zero core · September 2026</th><th align="center">Connector HAT · October 2026</th></tr>
@@ -30,9 +34,9 @@ To manufacture these boards or use them in your own robot, visit **[StackForce E
 - **Keep connections together:** Zero handles computation and control, while the Connector HAT brings out interfaces for the orientation sensor, servo controller and round display.
 - **Build your own controller:** **Gerber, drill files, BOM, placement data and manufacturing instructions** support PCB fabrication and assembly.
 
-See the [pinout](https://github.com/Deng-ge-open-source/StackForce-ESP32-Zero/blob/main/docs/PINOUT.md) and [wiring guide](https://github.com/Deng-ge-open-source/StackForce-ESP32-Zero/blob/main/docs/WIRING.md) for connector assignments and ESP32 GPIO settings.
+See the [hardware connection guide](../docs/WIRING.en.md) for connector assignments, peripheral wiring, and ESP32 GPIO settings.
 
-<p align="center"><a href="https://github.com/Deng-ge-open-source/StackForce-ESP32-Zero"><b>Explore StackForce ESP32 Zero · DIY hardware files →</b></a></p>
+<p align="center"><a href="https://github.com/Deng-ge-open-source/StackForce-ESP32-Zero/blob/main/README.en.md"><b>Explore StackForce ESP32 Zero · DIY hardware files →</b></a></p>
 
 **[Zero pinout and HAT wiring guide](../docs/WIRING.en.md)**
 

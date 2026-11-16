@@ -4,11 +4,11 @@
 
 **Start from scratch and learn to train and deploy your own robot with reinforcement learning.**
 
-Py-Apple Dog 5 is the fifth-generation open-source quadruped in the Py-Apple Dog family, introduced in 2026 by [OpenSpark Lab (灯哥开源)](https://space.bilibili.com/493192058). It has **12 actuated joints, with 3 degrees of freedom per leg**, a body and wheeled leg structure you can print and assemble yourself, and reinforcement learning policies for trotting, walking, bounding, and self-righting. With the matching firmware and peripherals, these policies can be deployed on a **low-cost ESP32 controller**.
+Py-Apple Dog 5 is the fifth-generation open-source quadruped in the Py-Apple Dog family, introduced in 2026 by [OpenSpark Lab](https://space.bilibili.com/493192058). It has **12 actuated joints, with 3 degrees of freedom per leg**, a body and wheeled leg structure you can print and assemble yourself, and reinforcement learning policies for trotting, walking, bounding, and self-righting. With the matching firmware and peripherals, these policies can be deployed on a **low-cost ESP32 controller**.
 
 The robot uses policies trained in [MJLab](https://github.com/mujocolab/mjlab) simulation to turn its current state and motion commands into joint control. This project takes you through mechanical assembly, reinforcement learning, and deployment on a real robot, while introducing tools that make it easier to bring motion policies to your own robots.
 
-The project provides **[printable STL models](stl/), [open policies](policies/), [training instructions](training/README.en.md), and [pretrained policy files](policies/)**, along with **[open-source hardware circuit designs](hardware/README.en.md)**, supporting the full process from building the structure to training, simulation, and deployment.
+The project provides **[printable STL models](stl/), [open policies](policies/README.en.md), [training instructions](training/README.en.md), and [pretrained policy files](policies/README.en.md)**, along with **[open-source hardware circuit designs](hardware/README.en.md)**, supporting the full process from building the structure to training, simulation, and deployment.
 
 - **Print and assemble:** STL files cover the body, shoulders, thighs, and complete wheeled lower legs.
 - **Train policies:** Load the Py-Apple Dog example in **[StackForce SimReady](https://sim.stackforce.cc/) (MJLab reinforcement learning project generator)**, train your own policy, and inspect it in playback.
@@ -33,7 +33,7 @@ The project provides **[printable STL models](stl/), [open policies](policies/),
 
 </div>
 
-![Py-Apple Dog generations: 1, 2, 3, and 5](docs/evolution.png)
+![Py-Apple Dog generations: 1, 2, 3, and 5](docs/evolution.en.png)
 
 ## Available gaits and actions
 
@@ -44,7 +44,7 @@ The project provides **[printable STL models](stl/), [open policies](policies/),
 | Gait or action | Simulation GIF | Behavior | Availability |
 | :---: | :---: | :---: | :---: |
 | Forward trot | ![Forward trot simulation](docs/gaits/forward-trot.gif) | Standing, forward trotting, and starting/stopping | Available |
-| Omnidirectional trot | ![Forward, backward, left, and right motion with direction arrows](docs/gaits/omnidirectional-four-directions.gif) | Forward, backward, left, and right motion; arrows indicate the direction | Available |
+| Omnidirectional trot | ![Forward, backward, left, and right motion with direction arrows](docs/gaits/omnidirectional-four-directions.en.gif) | Forward, backward, left, and right motion; arrows indicate the direction | Available |
 | Slow walk | ![Slow walking simulation](docs/gaits/slow-walk.gif) | Slow movement for observing leg motion and footfall order | Available |
 | Bound | ![Bounding simulation](docs/gaits/bound.gif) | Paired-leg bounding | Available |
 | Self-righting | ![Self-righting simulation](docs/gaits/self-righting.gif) | Recovery and posture adjustment after a fall | Available |
@@ -54,9 +54,9 @@ The project provides **[printable STL models](stl/), [open policies](policies/),
 
 Visit the [StackForce Sim2Sim online MuJoCo simulation platform](https://sim2sim.stackforce.cc/) to try Py-Apple Dog in your browser. Explore its different gaits and evaluate how its reinforcement learning policies run in simulation.
 
-[![Py-Apple Dog running in the StackForce Sim2Sim web interface](docs/sim2sim-online.png)](https://sim2sim.stackforce.cc/)
+[![Py-Apple Dog running in the StackForce Sim2Sim web interface](docs/sim2sim-online.en.png)](https://sim2sim.stackforce.cc/)
 
-“Available” refers to examples currently selectable on the website. Their ONNX policies and complete `.sim` projects are included in the [policy directory](policies/README.en.md). For physical deployment, use a project that matches your structure, servos, controller, and calibration. See the [compatibility notes](docs/COMPATIBILITY.md).
+“Available” refers to examples currently selectable on the website. Their ONNX policies and complete `.sim` projects are included in the [policy directory](policies/README.en.md). For physical deployment, use a project that matches your structure, servos, controller, and calibration. See the [compatibility notes](docs/COMPATIBILITY.en.md).
 
 ## Build your own Py-Apple Dog
 
@@ -78,17 +78,17 @@ These tools also support robots you design yourself. Learning this workflow give
 
 <a id="stackforce-training-flow"></a>
 
-[![Train a robot with the StackForce reinforcement learning tools](docs/stackforce-training-workflow.png)](docs/stackforce-training-workflow.png)
+[![Train a robot with the StackForce reinforcement learning tools](docs/stackforce-training-workflow.en.png)](docs/stackforce-training-workflow.en.png)
 
-**[Download STL](stl/) · [Printing and assembly](docs/PRINTING.md) · [Policy training](training/README.en.md) · [Sim2Sim validation](https://sim2sim.stackforce.cc/) · [Sim2Real deployment](https://sim2real.stackforce.cc/) · [Previous versions](legacy/README.en.md)**
+**[Download STL](stl/) · [Printing and assembly](docs/PRINTING.en.md) · [Policy training](training/README.en.md) · [Sim2Sim validation](https://sim2sim.stackforce.cc/) · [Sim2Real deployment](https://sim2real.stackforce.cc/) · [Previous versions](legacy/README.en.md)**
 
 <a id="diy-print"></a>
 
 ### Step 1: Print and assemble
 
-![Exploded view of the printable parts, with all four wheels facing outward](docs/parts-exploded-outward.png)
+![Exploded view of the printable parts, with all four wheels facing outward](docs/parts-exploded-outward.en.png)
 
-Start with your first printed part and build your own fifth-generation Py-Apple Dog. This repository provides **[printable STL models](stl/) and [printing and assembly instructions](docs/PRINTING.md)**. The printing directory contains **16 STL files**:
+Start with your first printed part and build your own fifth-generation Py-Apple Dog. This repository provides **[printable STL models](stl/) and [printing and assembly instructions](docs/PRINTING.en.md)**. The printing directory contains **16 STL files**:
 
 <div align="center">
 
@@ -107,7 +107,7 @@ Import the files into your slicer in **millimeters at 100% scale**. Print each l
 
 Use the exploded view and print list to fit the structural parts, servos, bearings, and control electronics.
 
-**[Download STL](stl/) · [Print list](docs/print-list.csv) · [Printing and assembly notes](docs/PRINTING.md)**
+**[Download STL](stl/) · [Print list](docs/print-list.en.csv) · [Printing and assembly notes](docs/PRINTING.en.md)**
 
 <a id="diy-deploy"></a>
 
@@ -121,7 +121,7 @@ Connect the [Zero core board](hardware/README.en.md) and [HAT](hardware/README.e
 
 #### Upload and run the policy
 
-![Overview of the Sim2Real deployment workflow](docs/deployment-usb-upload.gif)
+![Overview of the Sim2Real deployment workflow](docs/deployment-usb-upload.en.gif)
 
 This GIF uses a simulated device to demonstrate USB connection, joint mapping, policy upload, and startup. Calibrate your own hardware after assembly.
 
@@ -130,9 +130,9 @@ Open [StackForce Sim2Real](https://sim2real.stackforce.cc/) and select a project
 1. **Connect the controller:** Set up the firmware, controller board, and servo connections for your hardware.
 2. **Calibrate the joints:** Check the order, direction, zero position, and range of all 12 joints.
 3. **Check motion gradually:** Test individual joints, a single leg, and then standing to verify assembly and calibration.
-4. **Deploy the policy:** Select “Upload and run” (上传并运行), follow the validation and startup steps, and use the remote-control panel to view status and operate the robot.
+4. **Deploy the policy:** Select “Upload and run”, follow the validation and startup steps, and use the remote-control panel to view status and operate the robot.
 
-Keep the model, hardware, and policy configuration consistent. See the [compatibility notes](docs/COMPATIBILITY.md).
+Keep the model, hardware, and policy configuration consistent. See the [compatibility notes](docs/COMPATIBILITY.en.md).
 
 #### Running on real hardware
 
@@ -146,21 +146,21 @@ Keep the model, hardware, and policy configuration consistent. See the [compatib
 
 Start with this introduction to SimReady:
 
-[![Watch the SimReady introduction and training tutorial on Bilibili](docs/simready-example.png)](https://www.bilibili.com/video/BV1kVRzBEE2g/)
+[![Watch the SimReady introduction and training tutorial on Bilibili](docs/simready-example.en.png)](https://www.bilibili.com/video/BV1kVRzBEE2g/)
 
 **▶ [Bilibili: Turning a robot URDF into an Isaac Lab reinforcement learning project](https://www.bilibili.com/video/BV1kVRzBEE2g/)**
 
-The matching example is still listed in SimReady as **“菠萝狗 第四代 12自由度” (Py-Apple Dog Gen4, 12 DOF)**. You can start with its existing model and configuration. The repository also includes a [forward-gait training package](training/README.en.md) with a loadable `.simready` project, an MJLab training project, and parameter files.
+The matching example is still listed in SimReady as **“Pineapple Dog Gen4 · 12 DOF”**. You can start with its existing model and configuration. The repository also includes a [forward-gait training package](training/README.en.md) with a loadable `.simready` project, an MJLab training project, and parameter files.
 
-![SimReady training interface with its built-in training curves](docs/simready-training.gif)
+![SimReady training interface with its built-in training curves](docs/simready-training.en.gif)
 
-1. **Load the example:** Select “菠萝狗 第四代 12自由度” in SimReady and load it.
+1. **Load the example:** Select “Pineapple Dog Gen4 · 12 DOF” in SimReady and load it.
 2. **Inspect the policy mapping:** Review observations, actions, and joint mappings. Keep the example defaults for your first run.
 3. **Connect a local runner:** In the training step, download and start the runner using the website instructions, then connect it. Computation runs on your computer; the browser provides configuration and monitoring.
 4. **Train and replay:** Start with the small-scale validation option, then choose a training scale suitable for your computer. Watch the curves and replay saved models to inspect their motion.
 5. **Save and review:** Save the project and checkpoints, check playback in SimReady, and verify the observations, actions, and joint configuration required for simulation and deployment.
 
-**[Open SimReady](https://sim.stackforce.cc/) · [Forward-gait training instructions](training/README.en.md)**
+**[Open SimReady](https://sim.stackforce.cc/) · [Training walkthrough](docs/TRAINING.en.md) · [Forward-gait training package](training/README.en.md)**
 
 ## Repository navigation
 

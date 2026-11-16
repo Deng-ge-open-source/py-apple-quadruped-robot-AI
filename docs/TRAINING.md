@@ -1,3 +1,5 @@
+**简体中文** · [English](TRAINING.en.md)
+
 # 用 SimReady 训练菠萝狗 5
 
 [打开 StackForce SimReady](https://sim.stackforce.cc/) · [灯哥开源的视频介绍](https://www.bilibili.com/video/BV1kVRzBEE2g/)

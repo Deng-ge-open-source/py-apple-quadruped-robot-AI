@@ -1,0 +1,86 @@
+[
+  {
+    "index": 1,
+    "name": "body_mm",
+    "label": "Body"
+  },
+  {
+    "index": 2,
+    "name": "shoulder_01_mm",
+    "label": "Shoulder 01"
+  },
+  {
+    "index": 3,
+    "name": "shoulder_cover_01_mm",
+    "label": "Shoulder cover 01"
+  },
+  {
+    "index": 4,
+    "name": "shoulder_02_mm",
+    "label": "Shoulder 02"
+  },
+  {
+    "index": 5,
+    "name": "shoulder_03_mm",
+    "label": "Shoulder 03"
+  },
+  {
+    "index": 6,
+    "name": "shoulder_cover_02_mm",
+    "label": "Shoulder cover 02"
+  },
+  {
+    "index": 7,
+    "name": "shoulder_04_mm",
+    "label": "Shoulder 04"
+  },
+  {
+    "index": 8,
+    "name": "thigh_01_mm",
+    "label": "Thigh 01"
+  },
+  {
+    "index": 9,
+    "name": "thigh_02_mm",
+    "label": "Thigh 02"
+  },
+  {
+    "index": 10,
+    "name": "thigh_03_mm",
+    "label": "Thigh 03"
+  },
+  {
+    "index": 11,
+    "name": "thigh_04_mm",
+    "label": "Thigh 04"
+  },
+  {
+    "index": 12,
+    "name": "display_top_mm",
+    "label": "Display cover"
+  },
+  {
+    "index": 13,
+    "name": "FR_calf_with_wheel_mm",
+    "label": "FR front right calf",
+    "wheel_outward_offset_mm": 12.385932520377551
+  },
+  {
+    "index": 14,
+    "name": "FL_calf_with_wheel_mm",
+    "label": "FL front left calf",
+    "wheel_outward_offset_mm": 11.605070127834054
+  },
+  {
+    "index": 15,
+    "name": "RR_calf_with_wheel_mm",
+    "label": "RR rear right calf",
+    "wheel_outward_offset_mm": 13.181060857579595
+  },
+  {
+    "index": 16,
+    "name": "RL_calf_with_wheel_mm",
+    "label": "RL rear left calf",
+    "wheel_outward_offset_mm": 13.465430877617408
+  }
+]
