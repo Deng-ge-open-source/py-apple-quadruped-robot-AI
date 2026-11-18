@@ -111,6 +111,10 @@ DIY 一台菠萝狗，可以按下面三步开始：
 
 **[下载 STL](stl/) · [打印清单](docs/print-list.csv) · [打印与装配说明](docs/PRINTING.md)**
 
+如果你想省去逐项选型、采购元器件的麻烦，也可以直接选购我们准备的 **菠萝狗套件**，一次配齐，从装配开始，把更多时间留给强化学习训练和机器人实物部署。
+
+**[淘宝商品页 →](https://item.taobao.com/item.htm?abbucket=0&id=1099953034601) · [淘宝快捷链接 →](https://e.tb.cn/h.jkGIwebE57o3m0y?tk=zrA164ws3jW)**
+
 <a id="diy-deploy"></a>
 
 ### 第二步：强化学习策略实物部署
